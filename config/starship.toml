@@ -14,7 +14,7 @@ style_root = "bold green"
 show_always = true
 
 [directory]
-style = "cyan"
+style = "green"
 truncation_length = 0
 truncate_to_repo = true
 truncation_symbol = ""
