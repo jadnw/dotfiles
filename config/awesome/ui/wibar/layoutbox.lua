@@ -26,7 +26,7 @@ return function(s)
 	local widget = factory.create_button({
 		child = {
 			s.layoutbox,
-			margins = dpi(3),
+			margins = dpi(4),
 			widget = wibox.container.margin,
 		},
 	})

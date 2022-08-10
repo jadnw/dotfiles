@@ -78,7 +78,7 @@ _factory.create_button = function(obj)
 		{
 			obj.child,
 			forced_width = obj.width or dpi(36),
-			forced_height = obj.height or dpi(30),
+			forced_height = obj.height or dpi(32),
 			widget = wibox.container.place,
 		},
 		bg = obj.bg or beautiful.palette.transparent,
@@ -174,8 +174,8 @@ _factory.create_circular_progress = function(obj)
 		thickness = obj.thickness or dpi(3),
 		rounded_edge = true,
 		paddings = obj.padding or 0,
-		forced_width = obj.radius or dpi(30),
-		forced_height = obj.radius or dpi(30),
+		forced_width = obj.radius and obj.radius * 2 or dpi(32),
+		forced_height = obj.radius and obj.radius * 2 or dpi(32),
 		widget = wibox.container.arcchart,
 	})
 

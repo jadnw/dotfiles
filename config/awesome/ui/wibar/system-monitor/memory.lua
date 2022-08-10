@@ -2,11 +2,13 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 
 local lib = require("lib")
+local dpi = require("lib.utils").dpi
 local factory = require("factory")
 local apps = require("configurations.apps")
 
 local memory = factory.create_circular_progress({
 	tooltip = "Memory Usage",
+  radius = dpi(13),
 	icon = beautiful.icon_memory,
 	min_value = 0,
 	max_value = 100,
