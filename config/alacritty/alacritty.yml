@@ -28,13 +28,13 @@ scrolling:
 font:
   normal:
     family: Josevka
-    style: Semibold
+    style: Medium
   bold:
     family: Josevka
     style: Bold
   italic:
     family: Josevka
-    tyle: Semibold Italic
+    tyle: Medium Italic
   bold_italic:
     family: Josevka
     style: Bold Italic
