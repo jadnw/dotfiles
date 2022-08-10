@@ -76,7 +76,6 @@ paru -S --noconfirm --needed \
   sddm-sugar-candy-git \
   starship \
   stylua \
-  timeshift-autosnap \
   tree \
   ttf-fira-sans \
   unzip \
