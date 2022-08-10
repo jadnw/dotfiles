@@ -116,6 +116,7 @@ rm -rf ~/.local/share/{themes,fonts}
 mkdir -p ~/.local/share/{themes,fonts}
 git clone https://github.com/jadnw/Josevka.git
 rsync Josevka/patched/Josevka/* ~/.local/share/fonts/
+rsync Josevka/patched/Josevka-Extended/* ~/.local/share/fonts/
 rm -rf Josevka
 rsync ./fonts/local/* ~/.local/share/fonts/
 fc-cache -r
