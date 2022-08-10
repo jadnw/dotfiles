@@ -31,11 +31,11 @@ client.connect_signal("property::minimized", back_to_prev_client) -- luacheck: n
 awesome.connect_signal("widgets::splash::visibility", function(vis) -- luacheck: no global
 	local t = screen.primary.selected_tag -- luacheck: no global
 	if vis then
-		for idx, c in ipairs(t:clients()) do
+		for idx, c in ipairs(t:clients()) do -- luacheck: no unused
 			c.hidden = true
 		end
 	else
-		for idx, c in ipairs(t:clients()) do
+		for idx, c in ipairs(t:clients()) do -- luacheck: no unused
 			c.hidden = false
 		end
 	end
