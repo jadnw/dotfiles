@@ -1,0 +1,28 @@
+# ▪  • ▌ ▄ ·.  ▌ ▐·
+# ██ ·██ ▐███▪▪█·█▌
+# ▐█·▐█ ▌▐▌▐█·▐█▐█•
+# ▐█▌██ ██▌▐█▌ ███ 
+# ▀▀▀▀▀ █▪▀▀▀. ▀  
+# Created by: Jaden Wu
+# Github: @jadnw
+# Email: jadenwu137@protonmail.com
+
+# Gemstones Emerald for imv
+# ~/.config/imv/config
+
+# styling
+[options]
+background = #1f2528
+fullscreen = false
+overlay = true
+overlay_text_color = #b9c2c9
+overlay_background_color = #2a3136
+overlay_background_alpha = ff
+overlay_font = Josevka:11
+overlay_position_bottom = false
+
+# bindings
+[binds]
+j = next
+k = prev
+    

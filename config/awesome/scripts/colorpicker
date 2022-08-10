@@ -1,0 +1,108 @@
+#!/bin/fish
+
+set theme "$HOME/.config/awesome/externals/rofi/colorpicker.rasi"
+set notify_cmd dunstify --appname="Color Picker" "Your color has been picked"
+set clipboard_cmd xclip -selection clipboard
+
+function notify_then_action
+  set action_id ($notify_cmd --action=0,"Copy to clipboard" --action=1,"Dismiss" "Your color code is $argv[1]")
+  if test $action_id = "0"
+     echo -n "$argv[1]" | $clipboard_cmd 
+  end
+end
+
+# Options
+set rgb_opt ""
+set hex_opt ""
+set hsl_opt ""
+
+# Variables passed to rofi
+set options "$rgb_opt\n$hex_opt\n$hsl_opt"
+
+set opt (echo -e "$options" | rofi -dmenu -theme $theme -p "xcolor" -selected-row 1)
+
+switch $opt
+  case $hex_opt
+    set hex (xcolor -f hex -P 127 -S 8)
+    notify_then_action $hex
+  case $rgb_opt
+    set rgb (xcolor -f rgb -P 127 -S 8)
+    notify_then_action $rgb
+  case $hsl_opt
+    set rgb (xcolor -f rgb -P 127 -S 8)
+    set rgb_values (string split "," (echo -n (string split ")" (string split "(" "$rgb")[2])))
+
+    ### RGB to HSL
+    function max_num
+      set -l max $argv[1]
+
+      for x in $argv
+        if test $x -gt $max
+          set max $x
+        end
+      end
+
+      echo $max
+    end
+
+    function min_num
+      set -l min $argv[1]
+
+    for x in $argv
+      if test $x -lt $min
+        set min $x
+      end
+    end
+
+    echo $min
+  end
+
+  function convert_rgb_to_hsl
+    # Make r, g, b fractions of 1
+    set -l r (math $argv[1] / 255)
+    set -l g (math $argv[2] / 255)
+    set -l b (math $argv[3] / 255)
+
+    # Find greatest and smallest channel values
+    set -l min (min_num $r $g $b)
+    set -l max (max_num $r $g $b)
+    set -l delta (math $max - $min)
+    set -l h 0
+    set -l s 0
+    set -l l (math "($max + $min) / 2")
+
+    # Calculate H (hue)
+    # no difference
+    if test $delta -eq 0
+      set h 0
+    else if test $max -eq $r
+      set h (math "(($g - $b) / $delta) % 6")
+    else if test $max -eq $g
+      set h (math "($b - $r) / $delta + 2")
+    else
+      set h (math "($r - $g) / $delta + 4")
+    end
+
+    set h (math round "$h * 60")
+
+    if test $h -lt 0
+      set h (math "$h + 360")
+    end
+
+    # Calculate S (saturation)
+    if test $delta -eq 0
+      set s 0
+    else
+      set -l denominator (math abs "2 * $l - 1")
+      set s (math "$delta / (1 - $denominator)")
+    end
+
+    set s (math floor (math "$s * 100"))
+    set l (math floor (math "$l * 100"))
+
+    echo "hsl($h, $s%, $l%)"
+  end
+
+  set hsl (convert_rgb_to_hsl $rgb_values)
+  notify_then_action $hsl
+end

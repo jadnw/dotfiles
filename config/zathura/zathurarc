@@ -1,0 +1,43 @@
+# ·▄▄▄▄• ▄▄▄· ▄▄▄▄▄ ▄ .▄▄• ▄▌▄▄▄   ▄▄▄· 
+# ▪▀·.█▌▐█ ▀█ •██  ██▪▐██▪██▌▀▄ █·▐█ ▀█ 
+# ▄█▀▀▀•▄█▀▀█  ▐█.▪██▀▐██▌▐█▌▐▀▀▄ ▄█▀▀█ 
+# █▌▪▄█▀▐█ ▪▐▌ ▐█▌·██▌▐▀▐█▄█▌▐█•█▌▐█ ▪▐▌
+# ·▀▀▀ • ▀  ▀  ▀▀▀ ▀▀▀ · ▀▀▀ .▀  ▀ ▀  ▀ 
+# Created by: Jaden Wu
+# Github: @jadnw
+# Email: jadenwu137@protonmail.com
+
+# read "man zathurarc"
+
+# KEYMAPS
+map i toggle_index
+map g goto
+map h navigate previous
+map l navigate next
+map m mark_add
+map n mark_evaluate
+map r reload
+map R rotate
+map <C-m> change_mode
+map <C-p> print
+map <C-j> zoom in
+map <C-k> zoom out 
+map <C-i> recolor
+
+# OPTIONS
+# fonts
+set font "Josevka 11"
+
+# fit width
+set adjust-open "best-fit"
+
+# other options
+set scroll-step 60
+set guioptions ""
+set zoom-min 50
+
+# open zathura in dark mode
+set recolor
+
+# colorscheme 
+include theme

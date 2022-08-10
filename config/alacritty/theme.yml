@@ -1,0 +1,56 @@
+# Gemstones Emerald for Alacritty
+# ~/.config/alacritty/theme.yml
+colors:
+  primary:
+    background: '#1f2528'
+    foreground: '#b9c2c9'
+    dim_foreground: '#96a3ae'
+    bright_foreground: '#c9d0d5'
+  cursor:
+    text: '#1f2528'
+    cursor: '#93c68c'
+  vi_mode_cursor:
+    text: '#1f2528'
+    cursor: '#93c68c'
+  search:
+    matches:
+      foreground: '#363e45'
+      background: '#b196f0'
+    focused_match:
+      foreground: '#b196f0'
+      background: '#363e45'
+    bar:
+      foreground: '#363e45'
+      background: '#b196f0'
+  hints:
+    start:
+      foreground: '#363e45'
+      background: '#e8ce9b'
+    end:
+      foreground: '#e8ce9b'
+      background: '#363e45'
+  line_indicator:
+    foreground: None
+    background: None
+  selection:
+    text: '#b9c2c9'
+    background: '#414c54'
+  normal:
+    black: '#363e45'
+    red: '#ed7275'
+    green: '#93c68c'
+    yellow: '#e8ce9b'
+    blue: '#60aafb'
+    magenta: '#e397bb'
+    cyan: '#7ac6db'
+    white: '#b9c2c9'
+  bright:
+    black: '#363e45'
+    red: '#ed7275'
+    green: '#93c68c'
+    yellow: '#e8ce9b'
+    blue: '#60aafb'
+    magenta: '#e397bb'
+    cyan: '#7ac6db'
+    white: '#b9c2c9'
+    

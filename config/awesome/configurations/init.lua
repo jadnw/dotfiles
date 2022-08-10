@@ -1,0 +1,6 @@
+require("configurations.autostart")
+require("configurations.bindings")
+require("configurations.general")
+require("configurations.layouts")
+require("configurations.rules")
+require("configurations.tags")

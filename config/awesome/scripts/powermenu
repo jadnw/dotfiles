@@ -1,0 +1,35 @@
+#!/bin/fish
+
+set theme $HOME/.config/awesome/externals/rofi/powermenu.rasi
+set uptime (uptime -p | sed -e 's/up //g')
+
+# options
+set suspend ""
+set lock ""
+set logout ""
+set reboot ""
+set shutdown ""
+
+# variables passed to dmenu
+set options "$suspend\n$lock\n$logout\n$reboot\n$shutdown"
+
+set opt (echo -e $options | rofi -dmenu -p "Session Uptime: $uptime" -theme $theme -selected-row 2)
+
+if test -z $opt
+  exit 0
+end
+
+switch $opt
+  case $shutdown
+    poweroff
+  case $reboot
+    reboot
+  case $logout
+    awesome-client "awesome.quit()"
+  case $lock
+    awesome-client "
+      require('modules.lockscreen.lockscreen')()
+    "
+  case $suspend
+    systemctl suspend
+end

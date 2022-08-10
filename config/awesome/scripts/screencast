@@ -1,0 +1,43 @@
+#!/bin/fish
+
+set indicator awesome-client "require('modules.screencast')()"
+set savepath (xdg-user-dir VIDEOS)/recordings
+mkdir -p $savepath
+
+set -l CONFIG_RES 1920x1080
+set -l CONFIG_FRAMERATE 60
+set -l CONFIG_AUDIO pulse
+set -l CONFIG_MIC_LEVEL 25
+
+set recorder_pids (ps x | grep 'ffmpeg -f x11grab -video_size' | grep -v grep | awk '{print $1}')
+set count (count $recorder_pids)
+
+if test $count -eq 0
+  set theme "$HOME/.config/awesome/externals/rofi/recorder.rasi"
+
+  # Options
+  set sound ""
+  set silent ""
+  set soundmic ""
+
+  # Variables passed to rofi
+  set options "$sound\n$silent\n$soundmic"
+
+  set selected (echo -e "$options" | rofi -dmenu -theme $theme -p "ffmpeg" -selected-row 1)
+
+  switch $selected
+    case $sound
+      ffmpeg -f x11grab -video_size $CONFIG_RES -framerate $CONFIG_FRAMERATE -i $DISPLAY -f $CONFIG_AUDIO -i default -c:v libx264 -preset ultrafast -c:a aac $savepath/(date +%Y%m%d-%H%M%S.mp4) &
+      $indicator
+    case $soundmic
+      ffmpeg -f x11grab -video_size $CONFIG_RES -framerate $CONFIG_FRAMERATE -i $DISPLAY -f $CONFIG_AUDIO -i default -c:v libx264 -preset ultrafast -c:a aac $savepath/(date +%Y%m%d-%H%M%S.mp4) &
+      $indicator
+    case $silent
+      ffmpeg -f x11grab -video_size $CONFIG_RES -framerate $CONFIG_FRAMERATE -i $DISPLAY -c:v libx264 -preset ultrafast -c:a aac $savepath/(date +%Y%m%d-%H%M%S.mp4) &
+      $indicator
+  end
+else
+  killall -q ffmpeg
+  $indicator
+  dunstify --appname="Screencast Tool" "Screencast done" "Your screencast video saved at $savepath"
+end

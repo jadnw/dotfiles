@@ -1,0 +1,151 @@
+#!/bin/fish
+echo "Installing base packages ..."
+sudo pacman -S --noconfirm --needed base-devel git fish rustup
+echo "[DONE] Packages installed."
+
+sleep 1
+
+# Install rustup toolchain
+echo "Installing rustup with its stable toolchain ..."
+rustup install stable
+rustup default stable
+echo "[DONE] Rustup installed."
+
+sleep 1
+
+# Install Paru
+if which paru
+  echo "[DONE] Paru detected."
+else
+  echo "Installing paru ..."
+  git clone https://aur.archlinux.org/paru.git
+  pushd paru
+  makepkg -si --noconfirm
+  popd
+  rm -rf paru
+  echo "[DONE] Paru installed."
+end
+
+sleep 1
+
+echo "Refreshing repositories & Installing common packages with paru ..."
+paru -Syy --noconfirm
+paru -Sy --noconfirm archlinux-keyring
+
+paru -S --noconfirm --needed \
+  awesome-git \
+  breeze-snow-cursor-theme \
+  btop \
+  clang \
+  curl \
+  docker \
+  docker-compose \
+  docker-machine \
+  dunst \
+  fd \
+  firefox-developer-edition \
+  fnm-bin \
+  go \
+  golangci-lint \
+  gtk3 \
+  gtk4 \
+  imv \
+  jq \
+  lf \
+  luacheck \
+  man \
+  mpd \
+  neovim \
+  optipng \
+  pamixer \
+  papirus-icon-theme \
+  pdfjs \
+  python-adblock \
+  python-pip \
+  pipewire \
+  pipewire-alsa \
+  pipewire-pulse \
+  pipewire-jack \
+  polkit-gnome \
+  qutebrowser \
+  ripgrep \
+  rofi \
+  rsync \
+  scrot \
+  sddm \
+  sddm-sugar-candy-git \
+  starship \
+  stylua \
+  timeshift-autosnap \
+  tree \
+  ttf-fira-sans \
+  unzip \
+  vscode \
+  xdg-utils \
+  xdg-user-dirs \
+  xcolor \
+  zathura \
+  zathura-pdf-poppler
+
+echo "[DONE] Common packages has been installed"
+
+sleep 1
+
+# Enable systemd services
+echo "Enabling services ..."
+sudo systemctl enable sddm.service
+echo "[DONE] System services enabled."
+
+# SDDM
+echo "Configuring SDDM.."
+sudo rsync --recursive ./extras/sddm.conf.d /etc/
+sudo rsync --recursive ./config/sugar-candy /usr/share/sddm/themes/
+echo "[DONE] SDDM configured with Sugar Candy theme configs."
+
+sleep 1
+
+echo "Create default user directories..."
+xdg-user-dirs-update
+echo "[DONE] Default dirs created."
+
+sleep 1
+
+# Fonts
+echo "Downloading & copying fonts to directories ..."
+rm -rf ~/.local/share/{themes,fonts}
+mkdir -p ~/.local/share/{themes,fonts}
+git clone https://github.com/jadnw/Josevka.git
+rsync Josevka/patched/Josevka/* ~/.local/share/fonts/
+rm -rf Josevka
+rsync ./fonts/local/* ~/.local/share/fonts/
+fc-cache -r
+echo "[DONE] Fonts copied to ~/.local/share/fonts & /usr/share/fonts."
+
+# Run Docker with current user privileges
+sudo usermod -aG docker $USER
+
+sleep 1
+
+echo "Copying configuration files to their locations ..."
+# Copy common configs
+rm -rf ~/.config
+mkdir -p ~/.config
+rsync --recursive ./config/* ~/.config/
+
+# Copy common extra configs
+rsync ./extras/.gitconfig ~/
+sudo rsync --recursive ./extras/reflector /etc/xdg/
+# sudo rsync --recursive ./extras/timeshift /etc/
+echo "[DONE] Config files copied."
+
+# Install GTK themes
+echo "Downloading & copying Gemstones Emerald GTK themes"
+git clone https://github.com/jadnw/gemstones.gtk.git
+cp -R gemstones.gtk/themes/* ~/.local/share/themes/
+rm -rf gemstones.gtk
+echo "[DONE] GTK themes copied."
+
+# Copy login background wallpaper to its location
+sudo rsync ./config/awesome/themes/wallpapers/greeting.jpg /usr/share/sddm/themes/sugar-candy/
+
+sleep 1

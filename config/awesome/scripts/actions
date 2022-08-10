@@ -1,0 +1,14 @@
+#!/bin/fish
+
+set action (dunstify --appname="Alacritty" --icon="Alacritty" --action=0,"Dismiss" --action=1,"Ignore" --action=2,"Accept" "Hello from Dunstify" "This is a sample notification from dunstify")
+
+switch $action
+  case 0
+    echo "Dismiss"
+  case 1
+    echo "Ignore"
+  case 2
+    echo "Accept"
+  case "*"
+    echo "Dismiss"
+end
