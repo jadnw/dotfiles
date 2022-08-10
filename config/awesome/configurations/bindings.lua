@@ -101,6 +101,10 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ mod, shift }, "l", function()
 		require("modules.lockscreen.lockscreen")()
 	end, { description = "lock screen", group = "Utilities" }),
+  -- Dismiss all notifications
+	awful.key({ mod }, "Escape", function()
+    naughty.destroy_all_notifications(nil, naughty.notification_closed_reason.dismissed_by_user)
+	end, { description = "Dismiss all notifications", group = "Utilities" }),
 })
 
 --- Tags

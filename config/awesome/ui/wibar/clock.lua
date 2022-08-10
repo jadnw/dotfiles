@@ -15,7 +15,7 @@ return function(s)
 				{
 					format = "%H:%M",
 					refresh = 60,
-					font = beautiful.font_family .. " Semibold 14",
+					font = beautiful.font_family .. " Semibold 16",
 					widget = wibox.widget.textclock,
 				},
 				left = dpi(8),

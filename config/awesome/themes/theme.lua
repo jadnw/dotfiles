@@ -62,7 +62,7 @@ theme.border_color_marked = theme.palette.orange
 theme.icon_theme = "Papirus-Dark"
 
 -- Wibar
-theme.wibar_height = dpi(32)
+theme.wibar_height = dpi(34)
 theme.wibar_border_width = dpi(0)
 theme.wibar_border = theme.palette.bg1
 theme.wibar_bg = theme.palette.bg0

@@ -10,7 +10,7 @@ return function()
 			{
 				id = "icon",
 				text = beautiful.icon_notifications,
-				font = beautiful.icon_font .. " Round 15",
+				font = beautiful.icon_font .. " Round 16",
 				widget = wibox.widget.textbox,
 			},
 			id = "background",
