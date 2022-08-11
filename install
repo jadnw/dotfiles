@@ -159,3 +159,15 @@ echo "[DONE] Gemstones Emerald GTK theme copied."
 
 # Copy login background wallpaper to its location
 sudo rsync ./config/awesome/themes/wallpapers/greeting.jpg /usr/share/sddm/themes/sugar-candy/
+
+# Install NodeJS
+echo "Installing Node.js ..."
+fnm install v18
+echo "[Done] Node.js installed."
+
+# Clean up
+echo "Cleaning up ..."
+paru -Rns (paru -Qdtq)
+echo "[Done] Packages to build have been removed."
+
+echo "Reboot and Enjoy!"
