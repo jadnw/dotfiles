@@ -62,13 +62,14 @@ paru -S --noconfirm --needed \
   pamixer \
   papirus-icon-theme \
   pdfjs \
-  python-adblock \
-  python-pip \
+  picom-jonaburg-git \
   pipewire \
   pipewire-alsa \
   pipewire-pulse \
   pipewire-jack \
   polkit-gnome \
+  python-adblock \
+  python-pip \
   qutebrowser \
   ripgrep \
   rofi \
