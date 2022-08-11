@@ -33,6 +33,7 @@ paru -Syy --noconfirm
 paru -Sy --noconfirm archlinux-keyring
 
 paru -S --noconfirm --needed \
+  alacritty \
   awesome-git \
   breeze-snow-cursor-theme \
   btop \
@@ -137,6 +138,8 @@ rsync --recursive ./config/* ~/.config/
 # Copy common extra configs
 rsync ./extras/.gitconfig ~/
 sudo rsync --recursive ./extras/reflector /etc/xdg/
+sudo rsync ./extras/xorg.conf.d/20-amdgpu.conf /etc/X11/xorg.conf.d/
+rsync --recursive ./extras/.icons ~/
 # sudo rsync --recursive ./extras/timeshift /etc/
 echo "[DONE] Config files copied."
 
