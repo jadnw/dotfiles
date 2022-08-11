@@ -71,6 +71,7 @@ paru -S --noconfirm --needed \
   python-adblock \
   python-pip \
   qutebrowser \
+  redshift \
   ripgrep \
   rofi \
   rsync \
