@@ -84,6 +84,7 @@ paru -S --noconfirm --needed \
   unzip \
   vscode \
   xcolor \
+  xclip \
   xdg-utils \
   xdg-user-dirs \
   xf86-video-amdgpu \
