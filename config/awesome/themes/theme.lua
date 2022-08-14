@@ -10,7 +10,7 @@ local palette = require("themes.palette")
 local theme = {}
 
 -- Sizes
-theme.master_width_factor = 0.525
+theme.master_width_factor = 0.575
 
 -- Fonts
 theme.font_family = "Josevka"
