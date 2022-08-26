@@ -30,7 +30,7 @@ overlay = true
 overlay_text_color = ${white}
 overlay_background_color = ${bg2}
 overlay_background_alpha = ff
-overlay_font = Josevka:11
+overlay_font = Jetka:11
 overlay_position_bottom = false
 
 # bindings

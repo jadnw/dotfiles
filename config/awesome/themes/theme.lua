@@ -13,7 +13,7 @@ local theme = {}
 theme.master_width_factor = 0.525
 
 -- Fonts
-theme.font_family = "Josevka"
+theme.font_family = "Jetka"
 theme.font = theme.font_family .. " Semibold 11"
 theme.icon_font = "Material Icons"
 

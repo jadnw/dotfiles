@@ -27,17 +27,17 @@ scrolling:
 
 font:
   normal:
-    family: Josevka
-    style: Semibold
+    family: Jetka
+    style: Medium
   bold:
-    family: Josevka
-    style: Extrabold
+    family: Jetka
+    style: Bold
   italic:
-    family: Josevka
-    tyle: Semibold Italic
+    family: Jetka
+    tyle: Medium Italic
   bold_italic:
-    family: Josevka
-    style: Extrabold Italic
+    family: Jetka
+    style: Bold Italic
   size: 11.0
   offset:
     x: 0
