@@ -81,7 +81,7 @@ paru -S --noconfirm --needed \
   starship \
   stylua \
   tree \
-  ttf-fira-sans \
+  ttf-roboto \
   unzip \
   vscode \
   xcolor \
