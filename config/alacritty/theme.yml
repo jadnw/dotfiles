@@ -1,56 +1,56 @@
-# Gemstones Emerald for Alacritty
+# Winterfell for Alacritty
 # ~/.config/alacritty/theme.yml
 colors:
   primary:
-    background: '#1f2528'
-    foreground: '#b9c2c9'
-    dim_foreground: '#96a3ae'
-    bright_foreground: '#c9d0d5'
+    background: '#161f24'
+    foreground: '#8eaaba'
+    dim_foreground: '#61899e'
+    bright_foreground: '#a5bbc8'
   cursor:
-    text: '#1f2528'
-    cursor: '#93c68c'
+    text: '#161f24'
+    cursor: '#62a5fd'
   vi_mode_cursor:
-    text: '#1f2528'
-    cursor: '#93c68c'
+    text: '#161f24'
+    cursor: '#62a5fd'
   search:
     matches:
-      foreground: '#363e45'
-      background: '#b196f0'
+      foreground: '#23323a'
+      background: '#a47efd'
     focused_match:
-      foreground: '#b196f0'
-      background: '#363e45'
+      foreground: '#a47efd'
+      background: '#23323a'
     bar:
-      foreground: '#363e45'
-      background: '#b196f0'
+      foreground: '#23323a'
+      background: '#a47efd'
   hints:
     start:
-      foreground: '#363e45'
-      background: '#e8ce9b'
+      foreground: '#23323a'
+      background: '#d9c57a'
     end:
-      foreground: '#e8ce9b'
-      background: '#363e45'
+      foreground: '#d9c57a'
+      background: '#23323a'
   line_indicator:
     foreground: None
     background: None
   selection:
-    text: '#b9c2c9'
-    background: '#414c54'
+    text: '#8eaaba'
+    background: '#2a3b45'
   normal:
-    black: '#363e45'
-    red: '#ed7275'
-    green: '#93c68c'
-    yellow: '#e8ce9b'
-    blue: '#60aafb'
-    magenta: '#e397bb'
-    cyan: '#7ac6db'
-    white: '#b9c2c9'
+    black: '#3f5867'
+    red: '#df6265'
+    green: '#8ed084'
+    yellow: '#d9c57a'
+    blue: '#62a5fd'
+    magenta: '#f474bc'
+    cyan: '#60b8d8'
+    white: '#b0c4ce'
   bright:
-    black: '#363e45'
-    red: '#ed7275'
-    green: '#93c68c'
-    yellow: '#e8ce9b'
-    blue: '#60aafb'
-    magenta: '#e397bb'
-    cyan: '#7ac6db'
-    white: '#b9c2c9'
+    black: '#3f5867'
+    red: '#df6265'
+    green: '#8ed084'
+    yellow: '#d9c57a'
+    blue: '#62a5fd'
+    magenta: '#f474bc'
+    cyan: '#60b8d8'
+    white: '#b0c4ce'
     

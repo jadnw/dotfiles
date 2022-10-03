@@ -1,26 +1,26 @@
-# Gemstones Emerald colorscheme for Fish
+# Winterfell colorscheme for Fish
 # ~/.config/fish/conf.d/theme.fish
 
 # --> special
-set -l fg b9c2c9
-set -l sel 414c54
+set -l fg 8eaaba
+set -l sel 2a3b45
 
 # --> palette
-set -l red ed7275
-set -l green 93c68c
-set -l yellow e8ce9b
-set -l orange f4a582
-set -l blue 60aafb
-set -l magenta e397bb
-set -l purple b196f0
-set -l cyan 7ac6db
-set -l gray 708790
+set -l red df6265
+set -l green 8ed084
+set -l yellow d9c57a
+set -l orange ec9772
+set -l blue 62a5fd
+set -l magenta f474bc
+set -l purple a47efd
+set -l cyan 60b8d8
+set -l gray 466272
 
 # Syntax Highlighting
 set -g fish_color_normal $fg
-set -g fish_color_command $green
+set -g fish_color_command $blue
 set -g fish_color_param $fg
-set -g fish_color_keyword $red
+set -g fish_color_keyword $fg
 set -g fish_color_quote $green
 set -g fish_color_redirection $purple
 set -g fish_color_end $orange
