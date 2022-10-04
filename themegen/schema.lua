@@ -2,17 +2,17 @@ return {
 	theme = "Winterfell",
 	palette = {
 		-- Accent color
-		accent = "#62a5fd",
+		accent = "#46c39d",
 		-- Backgrounds & Foregrounds
-		bg0 = "#0e1518",
-		bg1 = "#161f24",
-		bg2 = "#1c282f",
-		bg3 = "#23323a",
-		bg4 = "#2a3b45",
-		fg0 = "#a5bbc8",
-		fg1 = "#8eaaba",
-		fg2 = "#789aac",
-		fg3 = "#61899e",
+		bg0 = "#11171b",
+		bg1 = "#192329",
+		bg2 = "#1f2c34",
+		bg3 = "#2d3f4a",
+		bg4 = "#334855",
+		fg0 = "#b0c4ce",
+		fg1 = "#9ab3c1",
+		fg2 = "#83a2b3",
+		fg3 = "#6d91a5",
 		-- Palette
 		black = "#3f5867",
 		red = "#df6265",
