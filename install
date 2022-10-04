@@ -151,11 +151,11 @@ xrandr --output HDMI-A-0 --set TearFree on
 echo "[DONE] AMD GPU screen tearing fixed ..."
 
 # Install GTK themes
-echo "Downloading & copying Gemstones Emerald GTK themes"
-git clone https://github.com/jadnw/gemstones.gtk.git
-cp -R gemstones.gtk/themes/Gemstones-Emerald ~/.local/share/themes/
-rm -rf gemstones.gtk
-echo "[DONE] Gemstones Emerald GTK theme copied."
+echo "Downloading & copying Winterfell GTK themes"
+git clone https://github.com/jadnw/winterfell.gtk.git
+cp -R winterfell.gtk/themes/Winterfell ~/.local/share/themes/
+rm -rf winterfell.gtk
+echo "[DONE] winterfell Emerald GTK theme copied."
 
 # Copy login background wallpaper to its location
 sudo rsync ./config/awesome/themes/wallpapers/greeting.jpg /usr/share/sddm/themes/sugar-candy/
