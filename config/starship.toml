@@ -9,8 +9,8 @@
 
 [username]
 format = " [ ]($style) "
-style_user = "bold teal"
-style_root = "bold teal"
+style_user = "bold green"
+style_root = "bold green"
 show_always = true
 
 [directory]
@@ -64,7 +64,7 @@ disabled = true
 
 # Prompt: param 2
 [character]
-success_symbol = " [ ](bold teal)"
+success_symbol = " [ ](bold green)"
 error_symbol = " [更](bold red)"
 
 [aws]
