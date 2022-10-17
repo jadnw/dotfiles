@@ -31,9 +31,6 @@ colors:
     focused_match:
       foreground: '${purple}'
       background: '${bg3}'
-    bar:
-      foreground: '${bg3}'
-      background: '${purple}'
   hints:
     start:
       foreground: '${bg3}'
@@ -44,6 +41,9 @@ colors:
   line_indicator:
     foreground: None
     background: None
+  footer_bar:
+    foreground: '${bg3}'
+    background: '${purple}'
   selection:
     text: '${fg1}'
     background: '${bg4}'

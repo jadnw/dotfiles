@@ -19,9 +19,7 @@ colors:
     focused_match:
       foreground: '#a47efd'
       background: '#2d3f4a'
-    bar:
-      foreground: '#2d3f4a'
-      background: '#a47efd'
+
   hints:
     start:
       foreground: '#2d3f4a'
@@ -32,6 +30,9 @@ colors:
   line_indicator:
     foreground: None
     background: None
+  footer_bar:
+    foreground: '#2d3f4a'
+    background: '#a47efd'
   selection:
     text: '#9ab3c1'
     background: '#334855'
