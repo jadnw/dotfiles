@@ -108,8 +108,8 @@ theme.layout_dwindle = config_dir .. "assets/layouts/dwindle.png"
 theme.layout_max = config_dir .. "assets/layouts/max.png"
 
 -- Text Icons
-theme.icon_cpu = "﬙"
-theme.icon_memory = ""
+theme.icon_cpu = ""
+theme.icon_memory = ""
 theme.icon_disk = ""
 theme.icon_temp = ""
 theme.icon_volume = ""
