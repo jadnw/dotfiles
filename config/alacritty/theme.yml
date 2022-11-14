@@ -2,56 +2,55 @@
 # ~/.config/alacritty/theme.yml
 colors:
   primary:
-    background: '#192329'
-    foreground: '#9ab3c1'
-    dim_foreground: '#6d91a5'
-    bright_foreground: '#b0c4ce'
+    background: '#1e282e'
+    foreground: '#a0b4c1'
+    dim_foreground: '#628397'
+    bright_foreground: '#cad5dc'
   cursor:
-    text: '#192329'
-    cursor: '#46c39d'
+    text: '#1e282e'
+    cursor: '#8ccf7e'
   vi_mode_cursor:
-    text: '#192329'
-    cursor: '#46c39d'
+    text: '#1e282e'
+    cursor: '#8ccf7e'
   search:
     matches:
-      foreground: '#2d3f4a'
-      background: '#a47efd'
+      foreground: '#2b3a43'
+      background: '#ad8bee'
     focused_match:
-      foreground: '#a47efd'
-      background: '#2d3f4a'
-
+      foreground: '#ad8bee'
+      background: '#2b3a43'
   hints:
     start:
-      foreground: '#2d3f4a'
-      background: '#d9c57a'
+      foreground: '#2b3a43'
+      background: '#d8ce91'
     end:
-      foreground: '#d9c57a'
-      background: '#2d3f4a'
+      foreground: '#d8ce91'
+      background: '#2b3a43'
   line_indicator:
     foreground: None
     background: None
   footer_bar:
-    foreground: '#2d3f4a'
-    background: '#a47efd'
+    foreground: '#2b3a43'
+    background: '#ad8bee'
   selection:
-    text: '#9ab3c1'
-    background: '#334855'
+    text: '#a0b4c1'
+    background: '#32434d'
   normal:
-    black: '#3f5867'
-    red: '#df6265'
-    green: '#8ed084'
-    yellow: '#d9c57a'
-    blue: '#62a5fd'
-    magenta: '#f474bc'
-    cyan: '#60b8d8'
-    white: '#b0c4ce'
+    black: '#394c58'
+    red: '#e86a6f'
+    green: '#8ccf7e'
+    yellow: '#d8ce91'
+    blue: '#709ad2'
+    magenta: '#d076b9'
+    cyan: '#70d8ca'
+    white: '#cad5dc'
   bright:
-    black: '#3f5867'
-    red: '#df6265'
-    green: '#8ed084'
-    yellow: '#d9c57a'
-    blue: '#62a5fd'
-    magenta: '#f474bc'
-    cyan: '#60b8d8'
-    white: '#b0c4ce'
+    black: '#394c58'
+    red: '#e86a6f'
+    green: '#8ccf7e'
+    yellow: '#d8ce91'
+    blue: '#709ad2'
+    magenta: '#d076b9'
+    cyan: '#70d8ca'
+    white: '#cad5dc'
     

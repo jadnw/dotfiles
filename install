@@ -107,7 +107,7 @@ echo "[DONE] System services enabled."
 # SDDM
 echo "Configuring SDDM.."
 sudo rsync --recursive ./extras/sddm.conf.d /etc/
-sudo rsync --recursive ./config/sugar-candy /usr/share/sddm/themes/
+sudo rsync ./config/sugar-candy/theme.conf /usr/share/sddm/themes/sugar-candy/
 echo "[DONE] SDDM configured with Sugar Candy theme configs."
 
 sleep 1
@@ -123,8 +123,7 @@ echo "Downloading & copying fonts to directories ..."
 rm -rf ~/.local/share/{themes,fonts}
 mkdir -p ~/.local/share/{themes,fonts}
 git clone https://github.com/jadnw/Jetka.git
-rsync Jetka/patched/Jetka/* ~/.local/share/fonts/
-rsync Jetka/patched/Jetka-Extended/* ~/.local/share/fonts/
+rsync Jetka/patched/* ~/.local/share/fonts/
 rm -rf Jetka
 rsync ./fonts/local/* ~/.local/share/fonts/
 fc-cache -r
@@ -154,11 +153,11 @@ xrandr --output HDMI-A-0 --set TearFree on
 echo "[DONE] AMD GPU screen tearing fixed ..."
 
 # Install GTK themes
-echo "Downloading & copying Winterfell GTK themes"
-git clone https://github.com/jadnw/winterfell.gtk.git
-cp -R winterfell.gtk/themes/Winterfell ~/.local/share/themes/
-rm -rf winterfell.gtk
-echo "[DONE] winterfell Emerald GTK theme copied."
+echo "Downloading & copying Aesthetic GTK themes"
+git clone https://github.com/jadnw/aesthetic.gtk.git
+cp -R aesthetic.gtk/themes/Aesthetic ~/.local/share/themes/
+rm -rf aesthetic.gtk
+echo "[DONE] Aesthetic GTK theme copied."
 
 # Copy login background wallpaper to its location
 sudo rsync ./config/awesome/themes/wallpapers/greeting.jpg /usr/share/sddm/themes/sugar-candy/
