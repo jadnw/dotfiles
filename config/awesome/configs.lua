@@ -8,16 +8,16 @@ _G.notifications = {}
 -- User defined configs
 _G.configs = {
 	system_monitor = {
-		cpu_sampling_time = 12,
-		memory_sampling_time = 16,
-		temp_sampling_time = 18,
-		disk_sampling_time = 30,
+		cpu_sampling_time = 30,
+		memory_sampling_time = 30,
+		temp_sampling_time = 30,
+		disk_sampling_time = 1800,
 	},
 	network = {
-		sampling_time = 10,
+		sampling_time = 15,
 	},
 	volume = {
-		sampling_time = 8,
+		sampling_time = 15,
 	},
 	-- for notification icons and colors
 	notifications = {
