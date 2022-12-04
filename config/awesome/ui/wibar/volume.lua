@@ -14,7 +14,7 @@ return function(s)
 		icon = beautiful.icon_volume,
 		min_value = 0,
 		max_value = 100,
-		ring_color = beautiful.palette.teal,
+		ring_color = beautiful.palette.accent,
 		on_click = function()
 			awesome.emit_signal("volume_popup::toggle") -- luacheck: no global
 		end,
