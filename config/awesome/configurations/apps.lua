@@ -16,7 +16,7 @@ return {
 		-- Default web browser
 		browser = "qutebrowser",
 		-- Default dev browser
-		dev_browser = "firefox-developer-edition",
+		dev_browser = "chromium",
 		-- Default file manager
 		file_manager = "lf",
 		-- Default network manager

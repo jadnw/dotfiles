@@ -37,6 +37,7 @@ paru -S --noconfirm --needed \
   awesome-git \
   breeze-snow-cursor-theme \
   btop \
+  chromium \
   clang \
   curl \
   docker \
@@ -45,7 +46,6 @@ paru -S --noconfirm --needed \
   dunst \
   fd \
   ffmpeg \
-  firefox-developer-edition \
   fnm-bin \
   go \
   golangci-lint \
@@ -86,6 +86,7 @@ paru -S --noconfirm --needed \
   tree \
   ttf-roboto \
   unzip \
+  upower \
   vscode \
   xcolor \
   xclip \
@@ -144,6 +145,7 @@ rsync --recursive ./config/* ~/.config/
 rsync ./extras/.gitconfig ~/
 sudo rsync --recursive ./extras/reflector /etc/xdg/
 sudo rsync ./extras/xorg.conf.d/20-amdgpu.conf /etc/X11/xorg.conf.d/
+sudo rsync ./extras/modprobe.d/amdgpu.conf /etc/modprobe.d/
 rsync --recursive ./extras/.icons ~/
 # sudo rsync --recursive ./extras/timeshift /etc/
 echo "[DONE] Config files copied."
