@@ -4,7 +4,7 @@ set gamma (string trim -lr (xrandr --verbose | grep -i "Gamma:"))
 
 function toggle
   if test "$gamma" = "Gamma:      1.0:1.0:1.0"
-    redshift -P -O 4750 &> /dev/null
+    redshift -P -O 5250 &> /dev/null
     echo true
   else
     redshift -x &> /dev/null
