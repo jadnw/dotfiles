@@ -12,7 +12,7 @@ local cpu = factory.create_circular_progress({
 	icon = beautiful.icon_cpu,
 	min_value = 0,
 	max_value = 100,
-	ring_color = beautiful.palette.accent,
+	ring_color = beautiful.palette.blue,
 	on_click = function()
 		lib.run.run_once_grep(apps.default.system_monitor)
 	end,

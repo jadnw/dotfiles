@@ -12,7 +12,7 @@ local memory = factory.create_circular_progress({
 	icon = beautiful.icon_memory,
 	min_value = 0,
 	max_value = 100,
-	ring_color = beautiful.palette.green,
+	ring_color = beautiful.palette.teal,
 	on_click = function()
 		lib.run.run_once_grep(apps.default.system_monitor)
 	end,
