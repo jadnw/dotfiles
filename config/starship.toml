@@ -9,8 +9,8 @@
 
 [username]
 format = " [ ]($style) "
-style_user = "bold cyan"
-style_root = "bold cyan"
+style_user = "bold green"
+style_root = "bold green"
 show_always = true
 
 [directory]
@@ -21,15 +21,15 @@ truncation_symbol = ""
 
 [git_status]
 style = "white"
-ahead = " ${count}"
-diverged = " ${ahead_count};  ${behind_count}"
-behind = " ${count}"
-deleted = ""
+ahead = " ${count}"
+diverged = " ${ahead_count};  ${behind_count}"
+behind = " ${count}"
+deleted = ""
 
 # Last param in the first line/row
 [cmd_duration]
 min_time = 1
-format = " ﲊ [$duration]($style)"
+format = " 神 [$duration]($style)"
 disabled = false
 
 ## SECOND LINE/ROW: Prompt
@@ -57,14 +57,14 @@ disabled = true
 
 # Prompt: optional param 1
 [time]
-format = " 🕙 $time($style)\n"
+format = "   $time($style)\n"
 time_format = "%T"
 style = "bright-white"
 disabled = true
 
 # Prompt: param 2
 [character]
-success_symbol = " [ ](bold cyan)"
+success_symbol = " [ ](bold green)"
 error_symbol = " [更](bold red)"
 
 [aws]
