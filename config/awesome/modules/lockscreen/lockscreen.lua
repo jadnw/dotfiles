@@ -28,7 +28,7 @@ local lock_screen_box = wibox({
 	ontop = true,
 	type = "splash",
 	screen = screen.primary, -- luacheck: no global
-	bgimage = gears.color.recolor_image(beautiful.lockscreen, beautiful.palette.bg0 .. "aa"),
+	bgimage = gears.color.recolor_image(beautiful.lockscreen, beautiful.palette.bg0 .. "66"),
 })
 awful.placement.maximize(lock_screen_box)
 
