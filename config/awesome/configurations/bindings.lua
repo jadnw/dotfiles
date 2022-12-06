@@ -37,15 +37,15 @@ awful.keyboard.append_global_keybindings({
 		awful.spawn(apps.default.float_term)
 	end, { description = "open terminal", group = "Apps" }),
 	-- File Manager
-	awful.key({ mod, shift }, "e", function()
+	awful.key({ mod }, "e", function()
 		awful.spawn.with_shell(apps.default.file_manager)
 	end, { description = "open file manager", group = "Apps" }),
 	-- Web Browser
-	awful.key({ mod, shift }, "b", function()
+	awful.key({ mod }, "b", function()
 		awful.spawn(apps.default.browser)
 	end, { description = "open browser", group = "Apps" }),
 	-- Dev Browser
-	awful.key({ mod, shift }, "w", function()
+	awful.key({ mod }, "w", function()
 		awful.spawn(apps.default.dev_browser)
 	end, { description = "open dev browser", group = "Apps" }),
 	-- Applications Launcher
