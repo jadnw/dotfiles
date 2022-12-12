@@ -29,21 +29,21 @@ ScreenHeight="1080"
 
 ## [Blur Settings]
 
-FullBlur="true"
-PartialBlur="false"
+FullBlur="false"
+PartialBlur="true"
 ## Enable or disable the blur effect; if HaveFormBackground is set to true then PartialBlur will trigger the BackgroundColor of the form element to be partially transparent and blend with the blur.
 
-BlurRadius="4"
+BlurRadius="32"
 ## Set the strength of the blur effect. Anything above 100 is pretty strong and might slow down the rendering time. 0 is like setting false for any blur.
 
 
 
 ## [Design Customizations]
 
-HaveFormBackground="false"
+HaveFormBackground="true"
 ## Have a full opacity background color behind the form that takes slightly more than 1/3 of screen estate;  if PartialBlur is set to true then HaveFormBackground will trigger the BackgroundColor of the form element to be partially transparent and blend with the blur.
 
-FormPosition="center"
+FormPosition="left"
 ## Position of the form which takes roughly 1/3 of screen estate. Can be left, center or right.
 
 BackgroundImageHAlignment="center"
@@ -128,16 +128,16 @@ DateFormat="dddd, d of MMMM"
 
 ## [Translations]
 
-HeaderText="Welcome to the jet, Jay!"
+HeaderText="Have your boarding pass?"
 ## Header can be empty to not display any greeting at all. Keep it short.
 
 ## SDDM may lack proper translation for every element. Suger defaults to SDDM translations. Please help translate SDDM as much as possible for your language: https://github.com/sddm/sddm/wiki/Localization. These are in order as they appear on screen.
 
 TranslatePlaceholderUsername=""
 TranslatePlaceholderPassword=""
-TranslateShowPassword="Lemme see my password"
-TranslateLogin="Launch Jet"
-TranslateLoginFailedWarning="Oops! You have entered a wrong password. Is that you, Jay?"
+TranslateShowPassword="Show me the code"
+TranslateLogin="Launch Now"
+TranslateLoginFailedWarning="Oops! Wrong password. Is that you, Jay?"
 TranslateCapslockWarning="Hmm. CAPSLOCK is on. Do you really need it?"
 TranslateSession=""
 TranslateSuspend=""
