@@ -54,6 +54,7 @@ paru -S --noconfirm --needed \
   imv \
   jq \
   lf \
+  libnotify \
   luacheck \
   man \
   mongodb-bin \
