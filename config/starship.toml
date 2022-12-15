@@ -8,7 +8,7 @@
 # Email: jadenwu137@protonmail.com
 
 [username]
-format = " [ ]($style) "
+format = " [ ]($style)"
 style_user = "bold green"
 style_root = "bold green"
 show_always = true
@@ -24,12 +24,12 @@ style = "white"
 ahead = " ${count}"
 diverged = " ${ahead_count};  ${behind_count}"
 behind = " ${count}"
-deleted = "﫝"
+deleted = ""
 
 # Last param in the first line/row
 [cmd_duration]
 min_time = 1
-format = " 神 [$duration]($style)"
+format = "  [$duration]($style)"
 disabled = false
 
 ## SECOND LINE/ROW: Prompt
@@ -64,11 +64,11 @@ disabled = true
 
 # Prompt: param 2
 [character]
-success_symbol = " [ ](bold green)"
-error_symbol = " [更](bold red)"
+success_symbol = " [](bold green)"
+error_symbol = " [](bold red)"
 
 [aws]
-symbol = " "
+symbol = " "
 
 [conda]
 symbol = "🐍"
@@ -113,19 +113,19 @@ symbol = " "
 symbol = " "
 
 [package]
-symbol = " "
+symbol = " "
 
 [perl]
 symbol = " "
 
 [php]
-symbol = " "
+symbol = "ﳄ "
 
 [python]
-symbol = "  "
+symbol = " "
 
 [ruby]
-symbol = " "
+symbol = " "
 
 [rust]
 symbol = " "
