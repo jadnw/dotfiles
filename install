@@ -149,6 +149,10 @@ sudo rsync ./extras/xorg.conf.d/20-amdgpu.conf /etc/X11/xorg.conf.d/
 sudo rsync ./extras/modprobe.d/amdgpu.conf /etc/modprobe.d/
 rsync --recursive ./extras/.icons ~/
 # sudo rsync --recursive ./extras/timeshift /etc/
+
+# Remove default cursor theme
+sudo rm -rf /usr/share/icons/default
+
 echo "[DONE] Config files copied."
 
 echo "Fix screen tearing for AMD GPU ..."
