@@ -13,6 +13,8 @@ return {
 		float_term = "alacritty --class float-term",
 		-- Default code editor
 		editor = "nvim",
+    -- Calculator
+    calculator = "alacritty --class calc -e calc",
 		-- Default web browser
 		browser = "firefox-developer-edition",
 		-- Default dev browser

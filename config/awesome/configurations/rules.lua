@@ -54,7 +54,6 @@ ruled.client.connect_signal("request::rules", function()
 		rule_any = {
 			instance = {
 				"Devtools", --- Firefox devtools
-				"float-term",
 				"btop",
         "nmtui",
 			},
@@ -82,6 +81,31 @@ ruled.client.connect_signal("request::rules", function()
 			ontop = true,
 			width = screen_width * 0.60,
 			height = screen_height * 0.60,
+			placement = lib.client.centered_client_placement,
+		},
+	})
+
+	--- Float small clients
+	ruled.client.append_rule({
+		id = "floating-small",
+		rule_any = {
+			instance = {
+				"float-term",
+        "calc",
+			},
+			class = {
+				"float-term",
+        "calc",
+			},
+			name = {},
+			role = {},
+			type = {},
+		},
+		properties = {
+			floating = true,
+			ontop = true,
+			width = screen_width * 0.40,
+			height = screen_height * 0.40,
 			placement = lib.client.centered_client_placement,
 		},
 	})

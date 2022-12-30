@@ -35,7 +35,11 @@ awful.keyboard.append_global_keybindings({
 	-- Floating Terminal
 	awful.key({ mod, shift }, "Return", function()
 		awful.spawn(apps.default.float_term)
-	end, { description = "open terminal", group = "Apps" }),
+	end, { description = "open float terminal", group = "Apps" }),
+	-- Calculator
+	awful.key({ mod }, "c", function()
+		awful.spawn(apps.default.calculator)
+	end, { description = "open float calculator", group = "Apps" }),
 	-- File Manager
 	awful.key({ mod }, "e", function()
 		awful.spawn.with_shell(apps.default.file_manager)
@@ -62,7 +66,7 @@ awful.keyboard.append_global_keybindings({
 		awful.spawn(apps.utils.powermenu, false)
 	end, { description = "open power menu", group = "Utilities" }),
 	-- Color Picker
-	awful.key({ mod }, "c", function()
+	awful.key({ mod, alt }, "c", function()
 		awful.spawn(apps.utils.colorpicker, false)
 	end, { description = "open color picker", group = "Utilities" }),
 	-- Recent Documents
