@@ -13,7 +13,7 @@ local function autostart()
 		awful.spawn("picom --experimental-backends --config " .. config_dir .. "externals/picom/picom.conf", false)
 	end)
 	-- Set keyboard repeat delay & repeat rate
-	lib.run.run_once_grep("xset r rate 250 50")
+	lib.run.run_once_grep("xset r rate 350 40")
 	-- Init lockscreen
 	lock_screen.init()
 	--- Polkit Agent
