@@ -14,13 +14,13 @@ return {
 		-- Default code editor
 		editor = "nvim",
 		-- Default web browser
-		browser = "qutebrowser",
+		browser = "chromium",
 		-- Default dev browser
-		dev_browser = "chromium",
+		dev_browser = "firefox-developer-edition",
 		-- Default file manager
-		file_manager = "lf",
+		file_manager = "thunar",
 		-- Default network manager
-		network_manager = "nm-connection-editor",
+		network_manager = "alacritty --class nmtui -e nmtui",
 		-- Default volume control wibar
 		volume_control = "pavucontrol",
 		-- Default system monitor

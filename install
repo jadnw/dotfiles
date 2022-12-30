@@ -46,6 +46,7 @@ paru -S --noconfirm --needed \
   dunst \
   fd \
   ffmpeg \
+  firefox-developer-edition \
   fnm-bin \
   go \
   golangci-lint \
@@ -74,7 +75,6 @@ paru -S --noconfirm --needed \
   postman-bin \
   python-adblock \
   python-pip \
-  qutebrowser \
   redshift \
   ripgrep \
   rofi \
@@ -84,6 +84,8 @@ paru -S --noconfirm --needed \
   sddm-sugar-candy-git \
   starship \
   stylua \
+  thunar \
+  thunar-archive-plugin \
   tree \
   ttf-roboto \
   unzip \

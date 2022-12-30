@@ -28,13 +28,13 @@ scrolling:
 font:
   normal:
     family: Jetka
-    style: Book
+    style: Medium
   bold:
     family: Jetka
     style: Bold
   italic:
     family: Jetka
-    tyle: Book Italic
+    tyle: Medium Italic
   bold_italic:
     family: Jetka
     style: Bold Italic

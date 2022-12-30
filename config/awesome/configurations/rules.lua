@@ -84,6 +84,30 @@ ruled.client.connect_signal("request::rules", function()
 		},
 	})
 
+	ruled.client.append_rule({
+		id = "floating-sm",
+		rule_any = {
+			instance = {
+			},
+			class = {
+        "nmtui",
+			},
+			name = {
+			},
+			role = {
+			},
+			type = {
+			},
+		},
+		properties = {
+			floating = true,
+			ontop = true,
+			width = screen_width * 0.25,
+			height = screen_height * 0.25,
+			placement = lib.client.centered_client_placement,
+		},
+	})
+
 	--- Centered
 	ruled.client.append_rule({
 		id = "centered",
