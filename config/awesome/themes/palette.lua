@@ -26,4 +26,3 @@ return {
   white = "#cad5dc",
   gray = "#547182",
 }
-    

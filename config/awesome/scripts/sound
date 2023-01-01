@@ -1,0 +1,18 @@
+#!/bin/fish
+
+function toggle_mute
+  pamixer --toggle-mute
+  pamixer --get-mute
+end
+
+function toggle_mute_source
+  pamixer --default-source --toggle-mute
+  pamixer --default-source --get-mute
+end
+
+switch $argv[1]
+  case toggle
+    toggle_mute
+  case toggle_source
+    toggle_mute_source
+end

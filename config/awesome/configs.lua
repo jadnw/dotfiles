@@ -7,24 +7,27 @@ _G.notifications = {}
 
 -- User defined configs
 _G.configs = {
-	system_monitor = {
-		cpu_sampling_time = 30,
-		memory_sampling_time = 30,
-		temp_sampling_time = 30,
-		disk_sampling_time = 1800,
-	},
-	network = {
-		sampling_time = 15,
-	},
-	volume = {
-		sampling_time = 15,
-	},
-	-- for notification icons and colors
-	notifications = {
-		apps = {
-			["screenshot tool"] = { icon = "", color = beautiful.palette.yellow },
-			["screencast tool"] = { icon = "", color = beautiful.palette.magenta },
-			["color picker"] = { icon = "", color = beautiful.palette.cyan },
-		},
-	},
+  system_monitor = {
+    cpu_sampling_time = 10,
+    memory_sampling_time = 10,
+    temp_sampling_time = 30,
+    disk_sampling_time = 1800,
+  },
+  sysguard = {
+    sampling_time = 10,
+  },
+  network = {
+    sampling_time = 10,
+  },
+  volume = {
+    sampling_time = 10,
+  },
+  -- for notification icons and colors
+  notifications = {
+    apps = {
+      ["screenshot tool"] = { icon = "", color = beautiful.palette.yellow },
+      ["screencast tool"] = { icon = "", color = beautiful.palette.magenta },
+      ["color picker"] = { icon = "", color = beautiful.palette.cyan },
+    },
+  },
 }

@@ -71,7 +71,7 @@ paru -S --noconfirm --needed \
   pipewire-alsa \
   pipewire-pulse \
   pipewire-jack \
-  polkit-gnome \
+  polkit-dumb-agent-git \
   postman-bin \
   python-adblock \
   python-pip \
@@ -86,6 +86,7 @@ paru -S --noconfirm --needed \
   stylua \
   thunar \
   thunar-archive-plugin \
+  todotxt \
   tree \
   ttf-roboto \
   unzip \

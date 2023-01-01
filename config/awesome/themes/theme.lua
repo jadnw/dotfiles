@@ -75,6 +75,9 @@ theme.popup_bg = theme.palette.bg0
 theme.wallpaper = gears.surface.load_uncached(config_dir .. "themes/wallpapers/wallpaper.jpg")
 theme.lockscreen = gears.surface.load_uncached(config_dir .. "themes/wallpapers/lockscreen.jpg")
 
+-- Images
+theme.avatar = gears.surface.load_uncached(config_dir .. "themes/images/avatar.png")
+
 -- Radius
 theme.border_radius = dpi(4)
 
@@ -108,13 +111,16 @@ theme.layout_dwindle = config_dir .. "assets/layouts/dwindle.png"
 theme.layout_max = config_dir .. "assets/layouts/max.png"
 
 -- Text Icons
-theme.icon_cpu = ""
+theme.icon_dashboard = ""
+theme.icon_power = ""
+theme.icon_cpu = ""
 theme.icon_memory = ""
 theme.icon_disk = ""
 theme.icon_temp = ""
 theme.icon_volume = ""
-theme.icon_network = ""
-theme.icon_network_disable = ""
+theme.icon_volume_mute = ""
+theme.icon_network = ""
+theme.icon_network_disabled = ""
 theme.icon_notifications = ""
 theme.icon_notifications_active = ""
 theme.icon_notifications_dnd = ""
@@ -123,5 +129,15 @@ theme.icon_nightlight = ""
 theme.icon_nightlight_disabled = ""
 theme.icon_systray_closed = ""
 theme.icon_systray_opened = ""
+theme.icon_sysguard = ""
+theme.icon_sysguard_warning = ""
+theme.icon_airplanemode = ""
+theme.icon_airplanemode_off = ""
+theme.icon_bluetooth = ""
+theme.icon_bluetooth_off = ""
+theme.icon_microphone = ""
+theme.icon_microphone_off = ""
+theme.icon_screenshot = ""
+theme.icon_recorder = ""
 
 return theme

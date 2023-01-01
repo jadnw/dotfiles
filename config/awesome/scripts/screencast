@@ -13,7 +13,7 @@ set recorder_pids (ps x | grep 'ffmpeg -f x11grab -video_size' | grep -v grep | 
 set count (count $recorder_pids)
 
 if test $count -eq 0
-  set theme "$HOME/.config/awesome/externals/rofi/recorder.rasi"
+  set theme "$HOME/.config/awesome/externals/rofi/screencast.rasi"
 
   # Options
   set sound ""
@@ -39,5 +39,5 @@ if test $count -eq 0
 else
   killall -q ffmpeg
   $indicator
-  dunstify --appname="Screencast Tool" "Screencast done" "Your screencast video saved at $savepath"
+  dunstify --appname="Screencast Tool" "Screencast" "Your screencast video saved at $savepath"
 end
