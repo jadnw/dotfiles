@@ -45,7 +45,12 @@ return function()
               widget = wibox.widget.textbox,
             },
             {
-              markup = '<span weight="800">Facebook:</span> facebook.com/jadnw',
+              markup = '<span weight="800">Email:</span> jadenwu137@protonmail.com',
+              font = beautiful.font,
+              widget = wibox.widget.textbox,
+            },
+            {
+              markup = '<span weight="800">Website:</span> jadnw.github.io',
               font = beautiful.font,
               widget = wibox.widget.textbox,
             },

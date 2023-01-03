@@ -61,6 +61,10 @@ awful.keyboard.append_global_keybindings({
 --- Utilities
 --------------------------------------------------------------------------------
 awful.keyboard.append_global_keybindings({
+  -- Dashboard
+  awful.key({ mod, shift }, "d", function()
+    awesome.emit_signal("dashboard::toggle") -- luacheck: no global
+  end, { description = "launch dashboard", group = "Utilities" }),
   -- Power Menu
   awful.key({ mod, shift }, "q", function()
     awful.spawn(apps.utils.powermenu, false)

@@ -2,12 +2,12 @@
 
 set theme $HOME/.config/awesome/externals/rofi/screenshot.rasi
 set savepath (xdg-user-dir PICTURES)/screenshots
-set notify_cmd dunstify --appname="Screenshot Tool" "Screenshot taken"
+set notify_cmd notify-send --app-name="Screenshot Tool" "Screenshot taken"
 set clipboard_cmd xclip -selection clipboard -t image/png -i
 mkdir -p $savepath
 
 function notify_then_action
-  set action_id ($notify_cmd --action=0,"Copy to clipboard" --action=1,"Dismiss" "Your screenshot have been saved at $argv[1]")
+  set action_id ($notify_cmd --action="Copy to clipboard" --action="Dismiss" "Your screenshot have been saved at $argv[1]")
   if test $action_id = "0"
      $clipboard_cmd $argv[1]
   end

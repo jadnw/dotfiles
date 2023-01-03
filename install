@@ -43,7 +43,6 @@ paru -S --noconfirm --needed \
   docker \
   docker-compose \
   docker-machine \
-  dunst \
   fd \
   ffmpeg \
   firefox-developer-edition \
@@ -60,6 +59,9 @@ paru -S --noconfirm --needed \
   man \
   mongodb-bin \
   mongodb-compass \
+  mpc \
+  mpd \
+  mpdris2 \
   mpv \
   neovim \
   optipng \
@@ -92,6 +94,8 @@ paru -S --noconfirm --needed \
   unzip \
   upower \
   vscode \
+  wireplumber \
+  xautolock \
   xcolor \
   xclip \
   xdg-utils \
@@ -100,26 +104,23 @@ paru -S --noconfirm --needed \
   zathura \
   zathura-pdf-poppler
 
-echo "[DONE] Common packages has been installed"
-
 sleep 1
 
 # Enable systemd services
 echo "Enabling services ..."
 sudo systemctl enable sddm.service
-echo "[DONE] System services enabled."
+
+sleep 1
 
 # SDDM
 echo "Configuring SDDM.."
 sudo rsync --recursive ./extras/sddm.conf.d /etc/
 sudo rsync ./config/sugar-candy/theme.conf /usr/share/sddm/themes/sugar-candy/
-echo "[DONE] SDDM configured with Sugar Candy theme configs."
 
 sleep 1
 
 echo "Create default user directories..."
 xdg-user-dirs-update
-echo "[DONE] Default dirs created."
 
 sleep 1
 
@@ -132,7 +133,6 @@ rsync Jetka/patched/* ~/.local/share/fonts/
 rm -rf Jetka
 rsync ./fonts/local/* ~/.local/share/fonts/
 fc-cache -r
-echo "[DONE] Fonts copied to ~/.local/share/fonts & /usr/share/fonts."
 
 # Run Docker with current user privileges
 sudo usermod -aG docker $USER
@@ -156,30 +156,40 @@ rsync --recursive ./extras/.icons ~/
 # Remove default cursor theme
 sudo rm -rf /usr/share/icons/default
 
-echo "[DONE] Config files copied."
+sleep 1
 
 echo "Fix screen tearing for AMD GPU ..."
 xrandr --output HDMI-A-0 --set TearFree on
-echo "[DONE] AMD GPU screen tearing fixed ..."
+
+sleep 1
 
 # Install GTK themes
-echo "Downloading & copying Aesthetic GTK themes"
+echo "Downloading & copying Aesthetic GTK themes ..."
 git clone https://github.com/jadnw/aesthetic.gtk.git
 cp -R aesthetic.gtk/themes/Aesthetic ~/.local/share/themes/
 rm -rf aesthetic.gtk
-echo "[DONE] Aesthetic GTK theme copied."
 
 # Copy login background wallpaper to its location
 sudo rsync ./config/awesome/themes/wallpapers/greeting.jpg /usr/share/sddm/themes/sugar-candy/
 
+sleep 1
+
 # Install NodeJS
 echo "Installing Node.js ..."
 fnm install v18
-echo "[Done] Node.js installed."
+
+sleep 1
+
+# Install black (python formatter)
+echo "Install black with PIP ..."
+pip install black
+
+sleep 1
 
 # Clean up
 echo "Cleaning up ..."
 paru -Rns (paru -Qdtq)
-echo "[Done] Packages to build have been removed."
+
+sleep 1
 
 echo "Reboot and Enjoy!"

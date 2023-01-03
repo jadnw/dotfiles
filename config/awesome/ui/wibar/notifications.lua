@@ -26,7 +26,7 @@ return function()
   local icon = notifications_label:get_children_by_id("icon")[1]
   local text = notifications_label:get_children_by_id("text")[1]
 
-  require("ui.notification-center")()
+  require("ui.notification_center")()
   local notifications = factory.create_button({
     child = notifications_label,
     tooltip = true,

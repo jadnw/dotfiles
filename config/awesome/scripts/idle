@@ -1,0 +1,16 @@
+#!/bin/fish
+
+function set_timer
+  xautolock -time 15 -locker "awesome-client \"require('modules.lockscreen.lockscreen')()\"" &
+end
+
+function reset_timer
+  xautolock -detectsleep
+end
+
+switch $argv[1]
+  case set
+    set_timer
+  case reset
+    reset_timer
+end

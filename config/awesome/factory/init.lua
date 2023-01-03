@@ -151,6 +151,74 @@ _factory.create_button = function(obj)
   return button
 end
 
+--- Create a circular button on dashboard quicksettings
+----------------------------------------------------------------------------------------------------
+-- @obj (table): The object to define a quicksettings button
+---- icon (string): The icon
+---- on_click (function): The function executed on click
+---- on_right_click (function): The function executed on right click
+-- @return The widget
+_factory.create_qs_button = function(obj)
+  local button_icon = wibox.widget({
+    text = obj.icon,
+    font = beautiful.icon_font .. " Round 24",
+    widget = wibox.widget.textbox,
+  })
+
+  local button = _factory.create_button({
+    child = button_icon,
+    tooltip = true,
+    bg = beautiful.palette.black,
+    width = dpi(80),
+    height = dpi(80),
+    border_radius = dpi(40),
+    on_click = obj.on_click,
+    on_right_click = obj.on_right_click,
+  })
+
+  button.set_icon = function(icon)
+    button_icon:set_text(icon)
+  end
+
+  return button
+end
+
+--- Create a music player button on music player
+----------------------------------------------------------------------------------------------------
+-- @obj (table): The object to define a button
+---- icon (string): The icon
+---- small (boolean): True if the button is small
+---- on_click (function): The function executed on click
+---- on_right_click (function): The function executed on right click
+-- @return The widget
+_factory.create_mp_button = function(obj)
+  local icon_size = obj.small and 12 or 24
+
+  local button_icon = wibox.widget({
+    text = obj.icon,
+    font = beautiful.icon_font .. " Round " .. icon_size,
+    widget = wibox.widget.textbox,
+  })
+
+  local button = _factory.create_button({
+    child = button_icon,
+    tooltip = true,
+    bg = beautiful.palette.transparent,
+    fg = obj.small and beautiful.palette.black or beautiful.palette.fg1,
+    width = dpi(44),
+    height = dpi(44),
+    border_radius = dpi(4),
+    on_click = obj.on_click,
+    on_right_click = obj.on_right_click,
+  })
+
+  button.set_icon = function(icon)
+    button_icon:set_text(icon)
+  end
+
+  return button
+end
+
 --- Create a dashboard circular progress widget
 ----------------------------------------------------------------------------------------------------
 -- @obj (table): The object to define the circular progress widget

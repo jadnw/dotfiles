@@ -8,19 +8,32 @@ _G.notifications = {}
 -- User defined configs
 _G.configs = {
   system_monitor = {
-    cpu_sampling_time = 10,
-    memory_sampling_time = 10,
+    cpu_sampling_time = 30,
+    memory_sampling_time = 30,
     temp_sampling_time = 30,
-    disk_sampling_time = 1800,
+    disk_sampling_time = 300,
   },
   sysguard = {
-    sampling_time = 10,
+    sampling_time = 60,
   },
   network = {
-    sampling_time = 10,
+    sampling_time = 60,
+  },
+  bluetooth = {
+    sampling_time = 60,
   },
   volume = {
-    sampling_time = 10,
+    sampling_time = 60,
+  },
+  microphone = {
+    sampling_time = 60,
+  },
+  nightlight = {
+    sampling_time = 60,
+  },
+  joke = {
+    sampling_time = 3600,
+    endpoint = "https://v2.jokeapi.dev/joke/Programming?format=txt",
   },
   -- for notification icons and colors
   notifications = {

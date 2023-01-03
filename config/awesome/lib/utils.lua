@@ -21,6 +21,10 @@ _utils.split = function(str, sep)
   return t
 end
 
+_utils.replace = function(str, sub, rep)
+  return string.gsub(str, sub, rep)
+end
+
 _utils.reverse = function(t)
   if #t <= 1 then
     return t

@@ -9,13 +9,13 @@ local dpi = require("lib.utils").dpi
 
 return function(s)
   local network_interface = wibox.widget({
-    text = "Oops. Unrecognized Connection",
+    text = "No interface",
     font = beautiful.font,
     widget = wibox.widget.textbox,
   })
 
   local network_ip = wibox.widget({
-    text = "Oops. Unrecognized IP Address",
+    text = "No IP address",
     font = beautiful.font,
     widget = wibox.widget.textbox,
   })
@@ -45,6 +45,30 @@ return function(s)
       awful.spawn("nmcli n on", false)
     else
       awful.spawn("nmcli n off", false)
+    end
+    awesome.emit_signal("network::change", checked)
+  end)
+
+  awesome.connect_signal("network::change", function(value)
+    if value then
+      awful.spawn.easy_async_with_shell([[nmcli c | head -n 2 | tail -n 1]], function(o)
+        local arr = lib.utils.split(o, " ")
+        local interface = arr[#arr]
+        local interface_type = arr[#arr - 1]
+        local label = lib.utils.trim(interface_type:gsub("^%l", string.upper) .. ": " .. interface)
+        network_interface:set_text(label)
+        awful.spawn.easy_async_with_shell(
+          [[nmcli -p device show | grep '^IP4.ADDRESS' | head -n 1]],
+          function(oi)
+            local contains_ip = lib.utils.split(oi, " ")
+            local ip = lib.utils.split(contains_ip[#contains_ip], "/")[1]
+            network_ip:set_text("IP: " .. ip)
+          end
+        )
+      end)
+    else
+      network_interface:set_text("No interface")
+      network_ip:set_text("No IP address")
     end
   end)
 
@@ -79,7 +103,7 @@ return function(s)
   end
   -- Set IP address
   network_popup.set_ip = function(ipa)
-    network_ip:set_text("IP Addr: " .. ipa)
+    network_ip:set_text("IP: " .. ipa)
   end
   -- Set checked
   network_popup.set_toggler_value = function(value)

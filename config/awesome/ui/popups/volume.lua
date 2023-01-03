@@ -8,6 +8,7 @@ local dpi = require("lib.utils").dpi
 return function(s)
   local set_volume = function(value)
     awful.spawn("pamixer --set-volume " .. value, false)
+    awesome.emit_signal("volume::change", value)
   end
 
   local volume_slider = factory.create_slider({

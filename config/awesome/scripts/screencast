@@ -39,5 +39,5 @@ if test $count -eq 0
 else
   killall -q ffmpeg
   $indicator
-  dunstify --appname="Screencast Tool" "Screencast" "Your screencast video saved at $savepath"
+  notify-send --app-name="Screencast Tool" "Screencast" "Your screencast video saved at $savepath"
 end

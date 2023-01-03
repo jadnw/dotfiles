@@ -11,6 +11,10 @@
 # Btop
 **/btop/btop.log
 
+# mpd
+**/mpd.db
+**/mpd.state
+
 # Ignore compressed files
 **/*.zip
 **/*.tar.xz

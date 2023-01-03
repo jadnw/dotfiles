@@ -43,21 +43,34 @@ return function(s)
     end,
   })
 
-  volume.set_tooltip("I'm talking at 100%")
+  awesome.connect_signal("volume::change", function(value)
+    text:set_text(value .. "%")
+    volume.set_tooltip("Volume: " .. value .. "%")
+  end)
 
-  awful.widget.watch([[fish -c "pamixer --get-volume"]], _G.configs.volume.sampling_time, function(_, stdout)
+  awful.widget.watch([[pamixer --get-volume]], _G.configs.volume.sampling_time, function(_, stdout)
     local volume_percentage = tonumber(stdout)
     if volume_percentage ~= nil then
-      awful.spawn.easy_async_with_shell([[fish -c "pamixer --get-default-sink | tail -n 1"]], function(o)
+      awful.spawn.easy_async_with_shell([[pamixer --get-default-sink | tail -n 1]], function(o)
         local device_name = lib.utils.split(o, '"')[4]
         awesome.emit_signal("volume_popup::device", device_name) -- luacheck: no global
       end)
       text:set_text(math.ceil(volume_percentage or 0) .. "%")
-      volume.set_tooltip("I'm talking at " .. math.ceil(volume_percentage or 0) .. "%")
+      volume.set_tooltip("Volume: " .. math.ceil(volume_percentage or 0) .. "%")
       awesome.emit_signal("volume_popup::value", volume_percentage or 0) -- luacheck: no global
     end
 
     collectgarbage("collect")
+  end)
+
+  awful.widget.watch([[pamixer --get-mute]], _G.configs.volume.sampling_time, function(_, stdout)
+    stdout = lib.utils.trim(stdout)
+
+    if stdout == "false" then
+      icon:set_text(beautiful.icon_volume)
+    else
+      icon:set_text(beautiful.icon_volume_mute)
+    end
   end)
 
   return volume

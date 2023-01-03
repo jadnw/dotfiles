@@ -26,9 +26,7 @@ local function create_cpu_progress()
   local idle_prev = 0
 
   awful.widget.watch(
-    [[fish -c "
-  cat /proc/stat | grep '^cpu '
-  "]],
+    [[cat /proc/stat | grep '^cpu ']],
     _G.configs.system_monitor.cpu_sampling_time,
     function(_, stdout)
       local user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice = -- luacheck: no unused
@@ -40,6 +38,7 @@ local function create_cpu_progress()
       local diff_usage = (1000 * (diff_total - diff_idle) / diff_total + 5) / 10
 
       cpu:set_value(diff_usage)
+      cpu.set_tooltip("Your system load at " .. math.ceil(diff_usage) .. "%")
       total_prev = total
       idle_prev = idle
       collectgarbage("collect")
@@ -63,7 +62,7 @@ local function create_memory_progress()
   })
 
   awful.widget.watch(
-    [[fish -c "free | grep '^Mem'"]],
+    [[free | grep '^Mem']],
     _G.configs.system_monitor.memory_sampling_time,
     function(_, stdout)
       local total, used, free, shared, buff_cache, available = -- luacheck: no unused
@@ -72,13 +71,13 @@ local function create_memory_progress()
       local bytes_per_gigabytes = 1024 * 1024
       memory:set_value(percentage)
       memory.set_tooltip(
-        "Hmm. It is <b>"
+        "You used <b>"
           .. math.ceil(percentage)
-          .. "%</b>. You used "
+          .. "%</b> ("
           .. math.ceil(used / bytes_per_gigabytes)
-          .. "GB of "
+          .. "G/"
           .. math.ceil(total / bytes_per_gigabytes)
-          .. "GB"
+          .. "G) of your memory."
       )
       collectgarbage("collect")
     end
@@ -101,12 +100,13 @@ local function create_disk_progress()
   })
 
   awful.widget.watch(
-    [[fish -c "df -h /home | grep '^/' | awk '{print $5}'"]],
+    [[df -h /home | grep '^/']],
     _G.configs.system_monitor.disk_sampling_time,
     function(_, stdout)
-      local space_consumed = tonumber(stdout:match("(%d+)"))
-      disk:set_value(space_consumed)
-      disk.set_tooltip("You used <b>" .. space_consumed .. "%</b> on your cheap SSD")
+      local disk_id, total, used, available, percentage = stdout:match("(%d+)%s*(%d+)G%s*(%d+)G%s*(%d+)G%s*(%d+)")
+      percentage = tonumber(percentage)
+      disk:set_value(percentage)
+      disk.set_tooltip("You used <b>" .. percentage .. "%</b> (" .. used .. "G/" .. total .. "G) of your SSD")
       collectgarbage("collect")
     end
   )
@@ -128,12 +128,12 @@ local function create_thermostat_progress()
   })
 
   awful.widget.watch(
-    [[fish -c "sensors | grep "^edge" | awk '{ print $2 }'"]],
+    [[sensors | grep "^edge" | awk '{ print $2 }']],
     _G.configs.system_monitor.temp_sampling_time,
     function(_, stdout)
       local cpu_temp = tonumber(stdout:match("(%d+)"))
       thermostat:set_value(cpu_temp)
-      thermostat.set_tooltip("Your CPU is boiling at " .. cpu_temp .. "C. Time to get some eggs.")
+      thermostat.set_tooltip("Girl, you're so hot. You are " .. cpu_temp .. "C.")
       collectgarbage("collect")
     end
   )
@@ -154,7 +154,7 @@ return function()
         memory_progress,
         disk_progress,
         thermostat_progress,
-        spacing = dpi(48),
+        spacing = dpi(56),
         layout = wibox.layout.fixed.horizontal,
       },
       margins = dpi(24),

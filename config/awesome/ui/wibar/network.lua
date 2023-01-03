@@ -43,22 +43,34 @@ return function(s)
   local icon = network_label:get_children_by_id("icon")[1]
   local text = network_label:get_children_by_id("text")[1]
 
-  awful.widget.watch([[fish -c "nmcli n"]], _G.configs.network.sampling_time, function(_, stdout)
+  awesome.connect_signal("network::change", function(value)
+    if value then
+      icon:set_text(beautiful.icon_network)
+      text:set_text("Connecting ...")
+      network.set_tooltip("Connecting ...") -- luacheck: no global
+    else
+      icon:set_text(beautiful.icon_network_disabled)
+      text:set_text("Disconnected")
+      network.set_tooltip("Cannot stackoverflow anymore") -- luacheck: no global
+    end
+  end)
+
+  awful.widget.watch([[nmcli n]], _G.configs.network.sampling_time, function(_, stdout)
     stdout = utils.trim(stdout)
 
     if stdout == "enabled" then
       icon:set_text(beautiful.icon_network)
       awesome.emit_signal("network_popup::checked", true) -- luacheck: no global
-      awful.spawn.easy_async_with_shell([[fish -c "nmcli c | head -n 2 | tail -n 1"]], function(o)
+      awful.spawn.easy_async_with_shell([[nmcli c | head -n 2 | tail -n 1]], function(o)
         local arr = utils.split(o, " ")
         local interface = arr[#arr]
         local interface_type = arr[#arr - 1]
-        local label = utils.trim(interface_type:gsub("^%l", string.upper) .. ": " .. interface .. " (" .. stdout .. ")")
+        local label = utils.trim(interface_type:gsub("^%l", string.upper) .. ": " .. interface)
         text:set_text(interface)
         network.set_tooltip(label)
         awesome.emit_signal("network_popup::interface", label) -- luacheck: no global
         awful.spawn.easy_async_with_shell(
-          [[fish -c "nmcli -p device show | grep '^IP4.ADDRESS' | head -n 1"]],
+          [[nmcli -p device show | grep '^IP4.ADDRESS' | head -n 1]],
           function(oip)
             local contains_ip = utils.split(oip, " ")
             local ip = utils.split(contains_ip[#contains_ip], "/")[1]
@@ -67,11 +79,11 @@ return function(s)
         )
       end)
     else
-      icon:set_text(beautiful.icon_network_disable)
+      icon:set_text(beautiful.icon_network_disabled)
       awesome.emit_signal("network_popup::checked", false) -- luacheck: no global
-      awesome.emit_signal("network_popup::interface", "Internet Disabled") -- luacheck: no global
-      awesome.emit_signal("network_popup::ip", "No address") -- luacheck: no global
-      network.set_tooltip("You forgot pay the Internet bill, huh?") -- luacheck: no global
+      awesome.emit_signal("network_popup::interface", "No interface") -- luacheck: no global
+      awesome.emit_signal("network_popup::ip", "No IP address") -- luacheck: no global
+      network.set_tooltip("Cannot stackoverflow anymore") -- luacheck: no global
     end
   end)
 

@@ -1,11 +1,12 @@
 #!/bin/fish
 
 set theme "$HOME/.config/awesome/externals/rofi/colorpicker.rasi"
-set notify_cmd dunstify --appname="Color Picker" "Your color has been picked"
+set notify_cmd notify-send --app-name="Color Picker" "Your color has been picked"
 set clipboard_cmd xclip -selection clipboard
 
 function notify_then_action
-  set action_id ($notify_cmd --action=0,"Copy to clipboard" --action=1,"Dismiss" "Your color code is $argv[1]")
+  set action_id ($notify_cmd --action="Copy to clipboard" --action="Dismiss" "Your color code is $argv[1]")
+  echo $action_id
   if test $action_id = "0"
      echo -n "$argv[1]" | $clipboard_cmd 
   end

@@ -47,9 +47,7 @@ return function(s)
   local idle_prev = 0
 
   awful.widget.watch(
-    [[fish -c "
-  cat /proc/stat | grep '^cpu '
-  "]],
+    [[cat /proc/stat | grep '^cpu ']],
     _G.configs.sysguard.sampling_time,
     function(_, stdout)
       local user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice = -- luacheck: no unused
@@ -65,7 +63,7 @@ return function(s)
       idle_prev = idle
 
       -- Calculate memory usage
-      awful.spawn.easy_async_with_shell([[fish -c "free | grep '^Mem'"]], function(out)
+      awful.spawn.easy_async_with_shell([[free | grep '^Mem']], function(out)
         local total_mem, used_mem, free_mem, shared_mem, buff_cache_mem, available_mem = -- luacheck: no unused
           out:match("(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)")
         local percentage = used_mem / total_mem * 100
@@ -82,9 +80,9 @@ return function(s)
             .. math.ceil(percentage)
             .. "%  Memory Used: "
             .. math.ceil(used_mem / bytes_per_gigabytes)
-            .. "/"
+            .. "G/"
             .. math.ceil(total_mem / bytes_per_gigabytes)
-            .. " GiB"
+            .. "G"
         )
       end)
 

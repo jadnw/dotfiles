@@ -131,11 +131,11 @@ local function create_text_widget(index, w)
   local text_widget = wibox.widget({
     id = "t" .. index,
     markup = w,
-    font = beautiful.font_family .. " Heavy 32",
+    font = beautiful.font_family .. " Heavy 48",
     align = "center",
     valign = "center",
-    forced_width = dpi(48),
-    forced_height = dpi(48),
+    forced_width = dpi(64),
+    forced_height = dpi(64),
     widget = wibox.widget.textbox,
   })
 
@@ -179,7 +179,7 @@ end
 local function deactivate_word(w)
   for _, m in pairs(char_map[w]) do
     local text = m.text
-    m.markup = lib.ui.colorize_text(text, beautiful.palette.fg1 .. "22")
+    m.markup = lib.ui.colorize_text(text, beautiful.palette.fg1 .. "44")
   end
 end
 
@@ -246,12 +246,10 @@ gears.timer({
 
 local date = wibox.widget({
   id = "date",
-  markup = os.date("%B %d, %Y "),
-  font = beautiful.font_family .. " Semibold 20",
+  markup = os.date("%B %d, %Y"),
+  font = beautiful.font_family .. " Semibold 18",
   align = "center",
   valign = "center",
-  forced_width = dpi(48),
-  forced_height = dpi(48),
   widget = wibox.widget.textbox,
 })
 
@@ -382,12 +380,10 @@ end
 
 local message = wibox.widget({
   id = "message",
-  markup = "Oops. Type your password and tap Return to unlock",
-  font = beautiful.font_family .. " Semibold 14",
+  markup = "Type your password and tap Return to unlock",
+  font = beautiful.font_family .. " Semibold 12",
   align = "center",
   valign = "center",
-  forced_width = dpi(48),
-  forced_height = dpi(48),
   widget = wibox.widget.textbox,
 })
 
@@ -403,7 +399,7 @@ lock_screen_box:setup({
       date,
       lock_animation,
       message,
-      spacing = dpi(48),
+      spacing = dpi(32),
       layout = wibox.layout.fixed.vertical,
     },
     expand = "none",

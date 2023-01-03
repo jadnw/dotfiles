@@ -8,7 +8,7 @@ killall -q rofi
 set docs (cat ~/.local/share/zathura/history | grep -Po "\[\K[^\]]*" | grep "/home/")
 
 if test -z "$docs"
-  dunstify --appname="Zathura" --icon="zathura" "No recents documents" "Cannot find any documents in your zathura history"
+  notify-send --app-name="Zathura" --icon="zathura" "No recents documents" "Cannot find any documents in your zathura history"
   exit 0
 end
 
