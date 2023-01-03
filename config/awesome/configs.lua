@@ -7,14 +7,12 @@ _G.notifications = {}
 
 -- User defined configs
 _G.configs = {
-  system_monitor = {
+  sysguard = {
+    sampling_time = 60,
     cpu_sampling_time = 30,
     memory_sampling_time = 30,
     temp_sampling_time = 30,
     disk_sampling_time = 300,
-  },
-  sysguard = {
-    sampling_time = 60,
   },
   network = {
     sampling_time = 60,

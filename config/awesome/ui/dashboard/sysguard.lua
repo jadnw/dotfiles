@@ -27,7 +27,7 @@ local function create_cpu_progress()
 
   awful.widget.watch(
     [[cat /proc/stat | grep '^cpu ']],
-    _G.configs.system_monitor.cpu_sampling_time,
+    _G.configs.sysguard.cpu_sampling_time,
     function(_, stdout)
       local user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice = -- luacheck: no unused
         stdout:match("(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s")
@@ -62,8 +62,8 @@ local function create_memory_progress()
   })
 
   awful.widget.watch(
-    [[free | grep '^Mem']],
-    _G.configs.system_monitor.memory_sampling_time,
+    [[fish -c "free | grep '^Mem'"]],
+    _G.configs.sysguard.memory_sampling_time,
     function(_, stdout)
       local total, used, free, shared, buff_cache, available = -- luacheck: no unused
         stdout:match("(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)")
@@ -101,12 +101,14 @@ local function create_disk_progress()
 
   awful.widget.watch(
     [[df -h /home | grep '^/']],
-    _G.configs.system_monitor.disk_sampling_time,
+    _G.configs.sysguard.disk_sampling_time,
     function(_, stdout)
       local disk_id, total, used, available, percentage = stdout:match("(%d+)%s*(%d+)G%s*(%d+)G%s*(%d+)G%s*(%d+)")
+
       percentage = tonumber(percentage)
       disk:set_value(percentage)
       disk.set_tooltip("You used <b>" .. percentage .. "%</b> (" .. used .. "G/" .. total .. "G) of your SSD")
+
       collectgarbage("collect")
     end
   )
@@ -128,12 +130,14 @@ local function create_thermostat_progress()
   })
 
   awful.widget.watch(
-    [[sensors | grep "^edge" | awk '{ print $2 }']],
-    _G.configs.system_monitor.temp_sampling_time,
+    [[fish -c "sensors | grep '^edge' | awk '{print $2}'"]],
+    _G.configs.sysguard.temp_sampling_time,
     function(_, stdout)
       local cpu_temp = tonumber(stdout:match("(%d+)"))
+
       thermostat:set_value(cpu_temp)
       thermostat.set_tooltip("Girl, you're so hot. You are " .. cpu_temp .. "C.")
+
       collectgarbage("collect")
     end
   )

@@ -2,12 +2,11 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
 
-local lib = require("lib")
 local dpi = require("lib.utils").dpi
 local factory = require("factory")
 local apps = require("configurations.apps")
 
-return function(s)
+return function()
   local sysguard_label = wibox.widget({
     {
       id = "icon",
@@ -63,7 +62,7 @@ return function(s)
       idle_prev = idle
 
       -- Calculate memory usage
-      awful.spawn.easy_async_with_shell([[free | grep '^Mem']], function(out)
+      awful.spawn.easy_async_with_shell([[fish -c "free | grep '^Mem'"]], function(out)
         local total_mem, used_mem, free_mem, shared_mem, buff_cache_mem, available_mem = -- luacheck: no unused
           out:match("(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)")
         local percentage = used_mem / total_mem * 100
