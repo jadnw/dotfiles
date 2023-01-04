@@ -183,36 +183,36 @@ local function new()
   ret._private.instant = false
 
   GLib.timeout_add(GLib.PRIORITY_DEFAULT, ANIMATION_FRAME_DELAY, function()
-    for index, animation in ipairs(ret._private.animations) do
-      if animation.state == true then
+    for index, anim in ipairs(ret._private.animations) do
+      if anim.state == true then
         -- compute delta time
         local time = GLib.get_monotonic_time()
-        local delta = time - animation.last_elapsed
-        animation.last_elapsed = time
+        local delta = time - anim.last_elapsed
+        anim.last_elapsed = time
 
         -- If pos is true, the animation has ended
-        local pos = animation.tween:update(delta)
+        local pos = anim.tween:update(delta)
         if pos == true then
           -- Loop the animation, don't end it.
           -- Useful for widgets like the spinning cicle
-          if animation.loop == true then
-            animation.tween:reset()
+          if anim.loop == true then
+            anim.tween:reset()
           else
             -- Snap to end
-            animation.pos = animation.tween.target
-            animation:fire(animation.pos)
-            animation:emit_signal("update", animation.pos)
+            anim.pos = anim.tween.target
+            anim:fire(anim.pos)
+            anim:emit_signal("update", anim.pos)
 
-            animation.state = false
-            animation.ended:fire(pos)
+            anim.state = false
+            anim.ended:fire(pos)
             table.remove(ret._private.animations, index)
-            animation:emit_signal("ended", animation.pos)
+            anim:emit_signal("ended", anim.pos)
           end
         -- Animation in process, keep updating
         else
-          animation.pos = pos
-          animation:fire(animation.pos)
-          animation:emit_signal("update", animation.pos)
+          anim.pos = pos
+          anim:fire(anim.pos)
+          anim:emit_signal("update", anim.pos)
         end
       else
         table.remove(ret._private.animations, index)

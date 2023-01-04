@@ -9,7 +9,7 @@ return function()
   local sound = factory.create_qs_button({
     icon = beautiful.icon_volume,
     on_click = function()
-      awesome.emit_signal("sound::toggle")
+      awesome.emit_signal("sound::toggle") -- luacheck: no global
     end,
     on_right_click = function() end,
   })

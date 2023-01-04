@@ -78,15 +78,15 @@ function _ui.custom_shape(cr, width, height)
   cr:close_path()
 end
 
-local function _get_widget_geometry(_hierarchy, widget)
-  local width, height = _hierarchy:get_size()
-  if _hierarchy:get_widget() == widget then
+local function _get_widget_geometry(hierarchy, widget)
+  local width, height = hierarchy:get_size()
+  if hierarchy:get_widget() == widget then
     -- Get the extents of this widget in the device space
-    local x, y, w, h = gmatrix.transform_rectangle(_hierarchy:get_matrix_to_device(), 0, 0, width, height)
-    return { x = x, y = y, width = w, height = h, hierarchy = _hierarchy }
+    local x, y, w, h = gmatrix.transform_rectangle(hierarchy:get_matrix_to_device(), 0, 0, width, height)
+    return { x = x, y = y, width = w, height = h, hierarchy = hierarchy }
   end
 
-  for _, child in ipairs(_hierarchy:get_children()) do
+  for _, child in ipairs(hierarchy:get_children()) do
     local ret = _get_widget_geometry(child, widget)
     if ret then
       return ret
@@ -94,8 +94,8 @@ local function _get_widget_geometry(_hierarchy, widget)
   end
 end
 
-function _ui.get_widget_geometry(wibox, widget)
-  return _get_widget_geometry(wibox._drawable._widget_hierarchy, widget)
+function _ui.get_widget_geometry(w, widget)
+  return _get_widget_geometry(w._drawable._widget_hierarchy, widget)
 end
 
 function _ui.screen_mask(s, bg)
