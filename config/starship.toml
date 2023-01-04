@@ -24,12 +24,12 @@ style = "white"
 ahead = " ${count}"
 diverged = " ${ahead_count};  ${behind_count}"
 behind = " ${count}"
-deleted = ""
+deleted = "ﮁ "
 
 # Last param in the first line/row
 [cmd_duration]
 min_time = 1
-format = "  [$duration]($style)"
+format = " ﲊ [$duration]($style)"
 disabled = false
 
 ## SECOND LINE/ROW: Prompt
