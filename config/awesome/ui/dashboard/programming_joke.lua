@@ -12,7 +12,7 @@ return function()
       {
         {
           {
-            text = "Shut up and take my joke!",
+            text = "I got you!",
             font = beautiful.font_family .. " Bold 11",
             widget = wibox.widget.textbox,
           },
