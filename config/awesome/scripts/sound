@@ -1,18 +1,40 @@
 #!/bin/fish
 
-function toggle_mute
-  pamixer --toggle-mute
-  pamixer --get-mute
+function get_sink_state
+  set mute_state (pamixer --get-mute)
+  if test $mute_state = "false"
+    echo on
+  else
+    echo off
+  end
 end
 
-function toggle_mute_source
+function get_source_state
+  set mute_state (pamixer --default-source --get-mute)
+  if test $mute_state = "false"
+    echo on
+  else
+    echo off
+  end
+end
+
+function toggle_sink
+  pamixer --toggle-mute
+  get_sink_state
+end
+
+function toggle_source
   pamixer --default-source --toggle-mute
-  pamixer --default-source --get-mute
+  get_source_state
 end
 
 switch $argv[1]
-  case toggle
-    toggle_mute
+  case get_sink_state
+    get_sink_state
+  case get_source_state
+    get_source_state
+  case toggle_sink
+    toggle_sink
   case toggle_source
-    toggle_mute_source
+    toggle_source
 end

@@ -15,10 +15,10 @@ return function()
     on_right_click = function() end,
   })
 
-  awful.widget.watch([[nmcli n]], _G.configs.network.sampling_time, function(_, stdout)
+  awful.widget.watch(apps.utils.network .. " state", _G.configs.network.sampling_time, function(_, stdout)
     stdout = utils.trim(stdout)
 
-    if stdout == "enabled" then
+    if stdout == "on" then
       network.set_icon(beautiful.icon_network)
       network:set_bg(beautiful.palette.accent)
       awful.spawn.easy_async_with_shell([[nmcli c | head -n 2 | tail -n 1]], function(o)
@@ -31,7 +31,7 @@ return function()
     else
       network.set_icon(beautiful.icon_network_disabled)
       network:set_bg(beautiful.palette.black)
-      network.set_tooltip("You forgot pay the Internet bill, huh?") -- luacheck: no global
+      network.set_tooltip("No network") -- luacheck: no global
     end
   end)
 
@@ -44,7 +44,7 @@ return function()
       else
         network.set_icon(beautiful.icon_network_disabled)
         network:set_bg(beautiful.palette.black)
-        network.set_tooltip("You forgot pay the Internet bill, huh?") -- luacheck: no global
+        network.set_tooltip("No network") -- luacheck: no global
       end
       awesome.emit_signal("network::change", stdout == "on" and true or false)
     end)

@@ -14,10 +14,10 @@ return function()
     on_right_click = function() end,
   })
 
-  awful.widget.watch([[pamixer --get-mute]], _G.configs.volume.sampling_time, function(_, stdout)
-    stdout = lib.utils.trim(stdout)
+  local update_sound = function(value)
+    value = lib.utils.trim(value)
 
-    if stdout == "false" then
+    if value == "on" then
       sound.set_icon(beautiful.icon_volume)
       sound:set_bg(beautiful.palette.accent)
       sound.set_tooltip("Sound: Enabled")
@@ -26,22 +26,14 @@ return function()
       sound:set_bg(beautiful.palette.black)
       sound.set_tooltip("Sound: Muted")
     end
-  end)
+
+    awesome.emit_signal("sound::change", value)
+  end
+
+  awful.widget.watch(apps.utils.sound .. " get_sink_state", _G.configs.volume.sampling_time, function(_, stdout) update_sound(stdout) end)
 
   local toggle_mute = function()
-    awful.spawn.easy_async_with_shell(apps.utils.sound .. " toggle", function(stdout)
-      stdout = lib.utils.trim(stdout)
-
-      if stdout == "false" then
-        sound.set_icon(beautiful.icon_volume)
-        sound:set_bg(beautiful.palette.accent)
-        sound.set_tooltip("Sound: Enabled")
-      else
-        sound.set_icon(beautiful.icon_volume_mute)
-        sound:set_bg(beautiful.palette.black)
-        sound.set_tooltip("Sound: Muted")
-      end
-    end)
+    awful.spawn.easy_async_with_shell(apps.utils.sound .. " toggle_sink", update_sound)
   end
 
   awesome.connect_signal("sound::toggle", toggle_mute)

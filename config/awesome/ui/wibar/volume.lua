@@ -48,6 +48,14 @@ return function(s)
     volume.set_tooltip("Volume: " .. value .. "%")
   end)
 
+  awesome.connect_signal("sound::change", function(value)
+    if value == "on" then
+      icon:set_text(beautiful.icon_volume)
+    else
+      icon:set_text(beautiful.icon_volume_mute)
+    end
+  end)
+
   awful.widget.watch([[pamixer --get-volume]], _G.configs.volume.sampling_time, function(_, stdout)
     local volume_percentage = tonumber(stdout)
     if volume_percentage ~= nil then

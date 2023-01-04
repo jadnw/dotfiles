@@ -14,38 +14,28 @@ return function()
     on_right_click = function() end,
   })
 
-  awful.widget.watch(
-    [[pamixer --default-source --get-mute]],
-    _G.configs.microphone.sampling_time,
-    function(_, stdout)
-      stdout = lib.utils.trim(stdout)
+  local update_microphone = function(value)
+    value = lib.utils.trim(value)
 
-      if stdout == "false" then
-        microphone.set_icon(beautiful.icon_microphone)
-        microphone:set_bg(beautiful.palette.accent)
-        microphone.set_tooltip("Microphone: Enabled")
-      else
-        microphone.set_icon(beautiful.icon_microphone_off)
-        microphone:set_bg(beautiful.palette.black)
-        microphone.set_tooltip("Microphone: Muted")
-      end
+    if value == "on" then
+      microphone.set_icon(beautiful.icon_microphone)
+      microphone:set_bg(beautiful.palette.accent)
+      microphone.set_tooltip("Microphone: Enabled")
+    else
+      microphone.set_icon(beautiful.icon_microphone_off)
+      microphone:set_bg(beautiful.palette.black)
+      microphone.set_tooltip("Microphone: Muted")
     end
-  )
+
+    awesome.emit_signal("microphone::change", value)
+  end
+
+  awful.widget.watch(apps.utils.sound .. " get_source_state", _G.configs.microphone.sampling_time, function(_, stdout)
+    update_microphone(stdout)
+  end)
 
   local toggle_microphone_mute = function()
-    awful.spawn.easy_async_with_shell(apps.utils.sound .. " toggle_source", function(stdout)
-      stdout = lib.utils.trim(stdout)
-
-      if stdout == "false" then
-        microphone.set_icon(beautiful.icon_microphone)
-        microphone:set_bg(beautiful.palette.accent)
-        microphone.set_tooltip("Microphone: Enabled")
-      else
-        microphone.set_icon(beautiful.icon_microphone_off)
-        microphone:set_bg(beautiful.palette.black)
-        microphone.set_tooltip("Microphone: Muted")
-      end
-    end)
+    awful.spawn.easy_async_with_shell(apps.utils.sound .. " toggle_source", update_microphone)
   end
 
   awesome.connect_signal("microphone::toggle", toggle_microphone_mute)

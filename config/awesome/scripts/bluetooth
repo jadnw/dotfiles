@@ -3,13 +3,17 @@
 function get_power_state
   set addr (string split " " (bluetoothctl list | grep "default"))[2]
   set state (string split ": " (string trim -lr (bluetoothctl show $addr | grep "Powered")))[2]
-  echo $state
+  if test $state = "yes"
+    echo on
+  else
+    echo off
+  end
 end
 
 function toggle
   set state (get_power_state) 
 
-  if test $state = "no"
+  if test $state = "off"
     bluetoothctl power on &> /dev/null
     echo on
   else
@@ -21,6 +25,6 @@ end
 switch $argv[1]
   case toggle
     toggle
-  case get_power_state
+  case state
     get_power_state
 end

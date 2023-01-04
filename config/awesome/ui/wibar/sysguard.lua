@@ -16,7 +16,7 @@ return function()
     },
     {
       id = "text",
-      text = "Loading ...",
+      text = "Calculating ...",
       font = beautiful.font .. " Semibold 11",
       widget = wibox.widget.textbox,
     },
@@ -40,7 +40,7 @@ return function()
     end,
   })
 
-  sysguard.set_tooltip("System load: 0%")
+  sysguard.set_tooltip("System load: Calculating ...")
 
   local total_prev = 0
   local idle_prev = 0
@@ -57,7 +57,6 @@ return function()
       local diff_total = total - total_prev
       local diff_usage = (1000 * (diff_total - diff_idle) / diff_total + 5) / 10
 
-      sysguard.set_tooltip("Your potato CPU is loading <b>" .. math.ceil(diff_usage) .. "%</b>")
       total_prev = total
       idle_prev = idle
 

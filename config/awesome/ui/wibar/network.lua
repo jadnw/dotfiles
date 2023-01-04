@@ -51,7 +51,7 @@ return function(s)
     else
       icon:set_text(beautiful.icon_network_disabled)
       text:set_text("Disconnected")
-      network.set_tooltip("Cannot stackoverflow anymore") -- luacheck: no global
+      network.set_tooltip("Cannot google your problem anymore") -- luacheck: no global
     end
   end)
 

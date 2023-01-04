@@ -1,4 +1,3 @@
-local awful = require("awful")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
 
@@ -10,7 +9,7 @@ local player = require("modules.player")
 return function()
   -- Current
   local title = wibox.widget({
-    text = "Hey DJ. Let's play some music!",
+    text = "Hey Jay! Let's play some catchy music.",
     font = beautiful.font,
     halign = "center",
     widget = wibox.widget.textbox,
@@ -32,7 +31,6 @@ return function()
     icon = beautiful.icon_music_player_play,
     on_click = function()
       awesome.emit_signal("player::toggle") -- luacheck: no global
-      update_title()
     end,
   })
   play_btn.set_tooltip("Play")
@@ -54,6 +52,7 @@ return function()
 
   local play_pause = function()
     player.toggle(update_play_params)
+    update_title()
   end
 
   awesome.connect_signal("player::toggle", play_pause) -- luacheck: no global
