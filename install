@@ -47,6 +47,7 @@ paru -S --noconfirm --needed \
   ffmpeg \
   firefox-developer-edition \
   fnm-bin \
+  glow \
   go \
   golangci-lint \
   gtk3 \
