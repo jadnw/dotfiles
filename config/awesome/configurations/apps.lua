@@ -16,9 +16,9 @@ return {
     -- Calculator
     calculator = "alacritty --class calc -e calc",
     -- Default web browser
-    browser = "chromium",
+    browser = "firefox-developer-edition",
     -- Default dev browser
-    dev_browser = "firefox-developer-edition",
+    dev_browser = "chromium",
     -- Default file manager
     file_manager = "thunar",
     -- Default network manager
