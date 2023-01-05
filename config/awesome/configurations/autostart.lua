@@ -19,7 +19,10 @@ local function autostart()
   -- Idle Management
   lib.run.run_once_pgrep(config_dir .. "scripts/idle set")
   --- Polkit Agent
-  lib.run.run_once_ps("polkit-dumb-agent", "/usr/bin/polkit-dumb-agent")
+	lib.run.run_once_ps(
+		"polkit-gnome-authentication-agent-1",
+		"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+	)
   -- Network Manager Applet
   lib.run.run_once_grep("nm-applet")
   -- Music Daemon
